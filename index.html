@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Al Fath Residence — Apartments in Madinah</title>
+<meta name="description" content="Al Fath Residence — 39 residences in Madinah's Al Fath district, two minutes from Masjid Al Fath and minutes from the Prophet's Mosque. Explore floor plans in 3D and register your interest.">
+<link rel="canonical" href="https://alfathresidence.netlify.app/">
+<meta name="theme-color" content="#1D3557">
+<link rel="icon" href="assets/logo/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Al Fath Residence">
+<meta property="og:title" content="Al Fath Residence — Apartments in Madinah">
+<meta property="og:description" content="A place where you call home. Minutes from the Prophet's Mosque.">
+<meta property="og:url" content="https://alfathresidence.netlify.app/">
+<meta property="og:image" content="https://alfathresidence.netlify.app/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Al Fath Residence — Apartments in Madinah">
+<meta name="twitter:description" content="A place where you call home. Minutes from the Prophet's Mosque.">
+<meta name="twitter:image" content="https://alfathresidence.netlify.app/assets/og.jpg">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ApartmentComplex","name":"Al Fath Residence","description":"Residential apartments in the Al Fath district of Madinah, minutes from the Prophet's Mosque.","url":"https://alfathresidence.netlify.app/","image":"https://alfathresidence.netlify.app/assets/og.jpg","email":"stay@alfathresidence.com","address":{"@type":"PostalAddress","streetAddress":"Al Fath District","addressLocality":"Madinah","addressCountry":"SA"}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#F5EFE6;color:#2B2521;font-family:'Jost',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:#457B9D;text-decoration:none;transition:color .3s ease}
+  a:hover{color:#2A4A73}
+  ::selection{background:#1D3557;color:#fff}
+  @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  [data-reveal="pending"]{opacity:0;transform:translateY(30px)}
+  [data-reveal="in"]{opacity:1;transform:none;transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1)}
+  .wrap{max-width:1180px;margin:0 auto}
+  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#457B9D;font-weight:500;margin-bottom:18px}
+  .h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,56px);line-height:1.04;margin:0}
+  .lead{font-size:15.5px;line-height:1.85;color:#5A5046;margin:0 0 18px;font-weight:300}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;background:#C88A5A;color:#fff;font-weight:600;font-size:.98rem;transition:background .3s,transform .3s;border:0;cursor:pointer}
+  .btn:hover{color:#fff;background:#b3763f;transform:translateY(-2px)}
+  .btn--ghost{background:transparent;border:1px solid rgba(251,247,240,.55);color:#FBF7F0;font-weight:500}
+  .btn--ghost:hover{background:rgba(251,247,240,.12)}
+  .btn--navy{background:#1D3557}.btn--navy:hover{background:#152741}
+  /* video hero */
+  .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;display:flex;align-items:flex-end;background:#101a2c}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(16,26,44,.28) 0%,rgba(16,26,44,0) 34%,rgba(16,26,44,.7) 100%)}
+  .hero__inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;padding:0 clamp(20px,4vw,52px) clamp(56px,9vw,110px);color:#FBF7F0}
+  .hero__eyebrow{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:rgba(251,247,240,.82);margin:0 0 14px}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.02;margin:0;letter-spacing:-.01em;text-shadow:0 2px 30px rgba(16,26,44,.55)}
+  .hero__sub{font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.6;color:rgba(251,247,240,.92);max-width:46ch;margin:18px 0 0;font-weight:300;text-shadow:0 1px 14px rgba(16,26,44,.5)}
+  .hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero__scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:2;color:rgba(251,247,240,.7);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  .hero__mute{position:absolute;right:clamp(16px,3vw,40px);bottom:clamp(18px,3vw,36px);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(251,247,240,.5);background:rgba(16,26,44,.45);color:#FBF7F0;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)}
+  .hero__mute:hover{background:rgba(16,26,44,.7)}
+  /* top nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(20px,4vw,52px);background:linear-gradient(180deg,rgba(16,26,44,.55),rgba(16,26,44,0));transition:background .35s ease,box-shadow .35s ease}
+  .nav.scrolled{background:rgba(16,26,44,.94);box-shadow:0 6px 26px rgba(0,0,0,.28)}
+  .nav__brand{display:flex;align-items:center;gap:12px;font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.2em;font-size:16px;color:#FBF7F0;white-space:nowrap}
+  .nav__brand img{height:42px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35));transition:height .3s}
+  .nav.scrolled .nav__brand img{height:34px}
+  .nav__brand span{color:#DCE8F2;letter-spacing:.24em}
+  .nav__links{display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
+  .nav__links a{color:rgba(251,247,240,.92);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;transition:color .25s}
+  .nav__links a:hover{color:#C88A5A}
+  .nav__links a.nav__cta{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(251,247,240,.55);padding:8px 16px;border-radius:999px}
+  .nav__links a.nav__cta:hover{background:#C88A5A;border-color:#C88A5A;color:#fff}
+  section[id],footer{scroll-margin-top:72px}
+  @media (max-width:760px){.nav{padding:10px 14px}.nav__brand span,.nav__brand b{display:none}.nav__brand img{height:36px}.nav__links{gap:10px}.nav__links a{font-size:10.5px;letter-spacing:.05em}.nav__links a.nav__home{display:none}.nav__links a.nav__cta{padding:7px 9px}.nav__links a.nav__cta span{display:none}}
+  /* about */
+  .about{padding:clamp(120px,13vw,180px) clamp(20px,4vw,52px) clamp(72px,10vw,128px)}
+  .about__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,88px);align-items:center}
+  .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 0;border-top:1px solid rgba(43,37,33,.1);border-bottom:1px solid rgba(43,37,33,.1);margin-top:clamp(48px,6vw,72px)}
+  .stat{flex:1 1 200px;text-align:center;padding:26px 18px;border-right:1px solid rgba(43,37,33,.08)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-family:'Cormorant Garamond',serif;font-size:30px;color:#7B4B2A;font-weight:500}
+  .stat span{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A7C6C;margin-top:6px}
+  .stat small{display:block;font-size:11.5px;letter-spacing:.08em;color:#A79A88;margin-top:4px}
+  @media (max-width:820px){.about__grid{grid-template-columns:1fr}}
+  /* floor plans */
+  .plans{padding:clamp(72px,10vw,128px) clamp(20px,4vw,52px);background:#EFE7DA}
+  .plans__head{text-align:center;max-width:680px;margin:0 auto clamp(36px,5vw,56px)}
+  .plans__pick{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);margin-bottom:clamp(18px,2.4vw,28px)}
+  .pcard{background:#F5EFE6;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;text-align:left;padding:0;transition:border-color .3s,transform .3s,box-shadow .3s;font:inherit;color:inherit}
+  .pcard:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(29,53,87,.45)}
+  .pcard.active{border-color:#C88A5A;box-shadow:0 18px 40px -22px rgba(200,138,90,.55)}
+  .pcard__img{background:#fff;padding:14px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+  .pcard__img img{max-height:100%;object-fit:contain}
+  .pcard__body{padding:16px 18px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .pcard__type{font-family:'Cormorant Garamond',serif;font-size:24px;color:#2B2521}
+  .pcard__area{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A7C6C}
+  .stage{background:#1D3557;border-radius:10px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(0,0,0,.6);display:grid;grid-template-columns:1fr 300px}
+  .stage__view{position:relative;min-height:clamp(380px,46vw,600px);background:radial-gradient(120% 90% at 50% 30%,#2a4a73 0%,#1D3557 55%,#152741 100%)}
+  .stage__view canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+  .stage__hint{position:absolute;left:18px;bottom:16px;display:inline-flex;align-items:center;gap:8px;color:rgba(251,247,240,.75);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;pointer-events:none}
+  .stage__hint svg{opacity:.8}
+  .stage__loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(251,247,240,.7);font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:opacity .4s;pointer-events:none}
+  .stage__loading.off{opacity:0}
+  .stage__toggle{position:absolute;right:16px;top:16px;display:flex;background:rgba(16,26,44,.55);border:1px solid rgba(251,247,240,.28);border-radius:999px;padding:3px;backdrop-filter:blur(6px)}
+  .stage__toggle button{font:inherit;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,247,240,.75);background:transparent;border:0;padding:7px 14px;border-radius:999px;cursor:pointer}
+  .stage__toggle button.on{background:#C88A5A;color:#fff}
+  .stage__flat{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:clamp(18px,3vw,40px);background:#F5EFE6;cursor:zoom-in}
+  .stage__flat img{max-height:100%;object-fit:contain}
+  .stage.flat .stage__flat{display:flex}
+  .stage__info{padding:clamp(24px,3vw,36px) clamp(22px,2.6vw,32px);color:#FBF3E4;display:flex;flex-direction:column;gap:18px;border-left:1px solid rgba(220,232,242,.14)}
+  .stage__info .eyebrow{color:#DCE8F2;margin-bottom:6px}
+  .stage__title{font-family:'Cormorant Garamond',serif;font-size:38px;line-height:1;margin:0}
+  .stage__area{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:rgba(251,243,228,.7)}
+  .specs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 10px}
+  .specs li{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(251,243,228,.9)}
+  .specs li svg{flex:0 0 auto;color:#DCE8F2}
+  .stage__rooms{font-size:13.5px;line-height:1.7;color:rgba(251,243,228,.72);font-weight:300;margin:0}
+  .stage__actions{margin-top:auto;display:flex;flex-direction:column;gap:10px}
+  .stage__actions .btn{justify-content:center}
+  .plans__more{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px);margin-top:clamp(18px,2.4vw,28px)}
+  .mcard{background:#F5EFE6;border-radius:6px;overflow:hidden;cursor:zoom-in;border:0;padding:0;font:inherit;text-align:left;color:inherit}
+  .mcard__img{background:#fff;padding:14px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+  .mcard__img img{max-height:100%;object-fit:contain}
+  .mcard__body{padding:16px 18px 18px}
+  .mcard__t{font-family:'Cormorant Garamond',serif;font-size:22px}
+  .mcard__s{font-size:13px;color:#6B6157;margin-top:4px;font-weight:300}
+  .facts{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:22px 26px;background:#1D3557;color:#FBF3E4;border-radius:6px}
+  .facts b{display:block;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;line-height:1}
+  .facts span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#DCE8F2}
+  @media (max-width:960px){.plans__pick{grid-template-columns:repeat(2,1fr)}.stage{grid-template-columns:1fr}.stage__info{border-left:0;border-top:1px solid rgba(220,232,242,.14)}.plans__more{grid-template-columns:1fr}}
+  /* location */
+  .loc{position:relative;padding:clamp(72px,10vw,120px) clamp(20px,4vw,52px);background:#1D3557;overflow:hidden}
+  .loc__grid{display:grid;grid-template-columns:1.45fr .85fr;gap:clamp(18px,2.4vw,28px);align-items:stretch}
+  .map{position:relative;border-radius:8px;overflow:hidden;border:1px solid rgba(220,232,242,.28);box-shadow:0 40px 90px -40px rgba(0,0,0,.7);min-height:clamp(380px,50vw,620px);background:#0d1b2a}
+  #map{position:absolute;inset:0}
+  .sites{background:rgba(220,232,242,.06);border:1px solid rgba(220,232,242,.18);border-radius:8px;padding:clamp(16px,2vw,24px);display:flex;flex-direction:column;gap:6px;max-height:clamp(380px,50vw,620px);overflow:auto}
+  .site{display:grid;grid-template-columns:10px 1fr auto;gap:12px;align-items:center;padding:11px 12px;border-radius:6px;background:transparent;border:0;text-align:left;color:#FBF3E4;font:inherit;cursor:pointer;transition:background .25s}
+  .site:hover,.site.on{background:rgba(220,232,242,.12)}
+  .site i{width:10px;height:10px;border-radius:50%;background:#C88A5A;display:block}
+  .site i.h{background:#DCE8F2}
+  .site i.me{background:#fff;box-shadow:0 0 0 3px rgba(200,138,90,.6)}
+  .site b{font-weight:500;font-size:14px;display:block}
+  .site small{display:block;font-size:11.5px;color:rgba(251,243,228,.6);letter-spacing:.04em;margin-top:2px}
+  .site em{font-style:normal;font-size:12px;letter-spacing:.08em;color:#DCE8F2;white-space:nowrap}
+  .leaflet-container{font-family:'Jost',sans-serif}
+  .leaflet-popup-content-wrapper{border-radius:6px;background:#1D3557;color:#FBF3E4;font-family:'Jost',sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .leaflet-popup-tip{background:#1D3557}
+  .leaflet-popup-content{margin:12px 16px;font-size:13.5px;line-height:1.5}
+  .leaflet-popup-content b{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;display:block;margin-bottom:2px}
+  .pin{width:14px;height:14px;border-radius:50%;background:#C88A5A;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .pin.h{background:#457B9D}
+  .pin.me{width:26px;height:26px;border-radius:50%;background:#1D3557;border:3px solid #fff;box-shadow:0 0 0 8px rgba(200,138,90,.35),0 4px 14px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center}
+  .pin.me img{width:16px;height:16px}
+  .leaflet-control-attribution{font-size:10px!important;background:rgba(255,255,255,.75)!important}
+  @media (max-width:900px){.loc__grid{grid-template-columns:1fr}.sites{max-height:none}}
+  /* gallery */
+  .gal{padding:clamp(72px,10vw,128px) clamp(20px,4vw,52px)}
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:120;background:rgba(15,11,8,.92);display:none;align-items:center;justify-content:center;padding:clamp(20px,5vw,64px);cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:86vh;object-fit:contain;border-radius:4px;box-shadow:0 40px 100px -20px rgba(0,0,0,.7);background:#fff}
+  /* reserve / footer */
+  .reserve{padding:clamp(72px,10vw,120px) clamp(20px,4vw,52px);background:#152741;color:#FBF5EA;text-align:center}
+  .reserve__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+  .foot{background:#101f36;color:rgba(242,233,218,.72);padding:clamp(56px,7vw,88px) clamp(20px,4vw,52px) 0}
+  .foot__grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1fr;gap:clamp(28px,4vw,56px)}
+  .foot h5{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#DCE8F2;margin:0 0 18px;font-weight:500}
+  .foot__col{display:flex;flex-direction:column;gap:12px;font-size:14px;font-weight:300;line-height:1.5}
+  .foot__col a{color:rgba(242,233,218,.72)}
+  .foot__col a:hover{color:#C88A5A}
+  @media (max-width:820px){.foot__grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body id="top">
+
+<!-- ============ TOP NAV ============ -->
+<nav class="nav" id="nav">
+  <a class="nav__brand" href="#top"><img src="assets/logo/mark-cream.png" alt="Al Fath Residence"><b>AL FATH <span>RESIDENCE</span></b></a>
+  <div class="nav__links">
+    <a class="nav__home" href="#top">Home</a>
+    <a href="#plans">Floor&nbsp;Plans</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#reserve">Contact&nbsp;Us</a>
+    <a class="nav__cta" href="assets/Al-Fath-Residence-Brochure.pdf" download title="Download brochure (PDF)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg><span>Brochure</span></a>
+  </div>
+</nav>
+
+<!-- ============ VIDEO HERO ============ -->
+<header class="hero">
+  <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/poster-r3.jpg">
+    <source src="assets/hero-r3.mp4" type="video/mp4">
+  </video>
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Al Fath, Madinah</p>
+    <h1>Your home in Madinah.</h1>
+    <p class="hero__sub">A place where you call home.</p>
+    <div class="hero__actions">
+      <a class="btn" href="#reserve">Register Your Interest</a>
+      <a class="btn btn--ghost" href="assets/Al-Fath-Residence-Brochure.pdf" download>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg>Download Brochure</a>
+    </div>
+  </div>
+  <button class="hero__mute" id="heroMute" aria-label="Unmute video" title="Unmute">
+    <svg id="icoMuted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+    <svg id="icoSound" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" style="display:none"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+  </button>
+  <span class="hero__scroll">Scroll</span>
+</header>
+<script>
+(function(){
+  var v=document.getElementById('heroVid');
+  if(window.innerWidth<=860){var s=v.querySelector('source');s.src='assets/hero-r3-m.mp4';v.load();}
+  var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});
+  var b=document.getElementById('heroMute'),im=document.getElementById('icoMuted'),is=document.getElementById('icoSound');
+  b.addEventListener('click',function(){v.muted=!v.muted;im.style.display=v.muted?'':'none';is.style.display=v.muted?'none':'';b.setAttribute('aria-label',v.muted?'Unmute video':'Mute video');if(!v.muted){var q=v.play();if(q&&q.catch)q.catch(function(){});}});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var q=v.play();if(q&&q.catch)q.catch(function(){});}else v.pause();});},{threshold:0.05}).observe(v);}
+  var nav=document.getElementById('nav');function onScroll(){if(window.scrollY>60)nav.classList.add('scrolled');else nav.classList.remove('scrolled');}onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+})();
+</script>
+
+<!-- ============ ABOUT ============ -->
+<section class="about">
+  <div class="wrap about__grid">
+    <div data-reveal="pending">
+      <div class="eyebrow">About the Residence</div>
+      <h2 class="h2" style="font-size:clamp(32px,4.6vw,52px);margin-bottom:26px;text-wrap:balance">A modern home, close enough to walk to every prayer.</h2>
+      <p class="lead">Al Fath Residence was built for the rhythm of life in Madinah. Set in the Al Fath district, it places you a short walk from Masjid Al Fath and minutes from the Prophet&rsquo;s Mosque, so the day can move gently between rest and worship.</p>
+      <p class="lead" style="margin:0">It is made for families and returning pilgrims who want a home of their own in the city &mdash; more space and privacy than a hotel room, in a building designed to be lived in for years, not nights.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.4vw,27px);color:#7B4B2A;line-height:1.35;margin:34px 0 0;padding-left:22px;border-left:2px solid #457B9D">&ldquo;Where every day begins close to what matters.&rdquo;</p>
+    </div>
+    <div data-reveal="pending" style="position:relative">
+      <div style="padding:10px;border:1px solid rgba(69,124,157,.55);border-radius:6px">
+        <img data-zoom src="assets/ext-front.jpg" alt="Al Fath Residence — street elevation" style="width:100%;height:clamp(360px,52vw,560px);object-fit:cover;border-radius:3px;cursor:zoom-in">
+      </div>
+    </div>
+  </div>
+  <div class="wrap stats">
+    <div class="stat"><b>20 min</b><span>Walk to the Haram</span><small>5 min drive</small></div>
+    <div class="stat"><b>2 min</b><span>To Masjid Al Fath</span></div>
+    <div class="stat"><b>6 min</b><span>To Masjid Al-Qiblatayn</span></div>
+    <div class="stat"><b>3 min</b><span>To Dr Soliman Fakeeh Hospital</span></div>
+  </div>
+</section>
+
+<!-- ============ FLOOR PLANS ============ -->
+<section id="plans" class="plans">
+  <div class="wrap">
+    <div data-reveal="pending" class="plans__head">
+      <div class="eyebrow">Floor Plans</div>
+      <h2 class="h2">Four ways to call it home.</h2>
+      <p class="lead" style="margin:18px auto 0;max-width:56ch">Every residence has two bedrooms, a salon and a family living room. Choose a type below to explore it as a 3D model &mdash; drag to turn it, scroll to zoom.</p>
+    </div>
+
+    <div data-reveal="pending" class="plans__pick" id="planPick"></div>
+
+    <div data-reveal="pending" class="stage" id="stage">
+      <div class="stage__view" id="stageView">
+        <div class="stage__loading" id="stageLoading">Building model&hellip;</div>
+        <div class="stage__flat" id="stageFlat"><img id="stageFlatImg" src="" alt=""></div>
+        <div class="stage__toggle"><button id="btn3d" class="on" type="button">3D</button><button id="btn2d" type="button">Plan</button></div>
+        <div class="stage__hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11.5V6a1.5 1.5 0 0 1 3 0v5"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L3.6 15a1.5 1.5 0 0 1 2.4-1.8L9 15.5"/></svg>Drag to rotate &middot; scroll to zoom</div>
+      </div>
+      <aside class="stage__info">
+        <div><div class="eyebrow">Apartment</div><h3 class="stage__title" id="stTitle">Type A</h3><div class="stage__area" id="stArea">133 sqm</div></div>
+        <ul class="specs" id="stSpecs"></ul>
+        <p class="stage__rooms" id="stRooms"></p>
+        <div class="stage__actions">
+          <button class="btn" id="stEnlarge" type="button">View full plan</button>
+          <a class="btn btn--ghost" href="#reserve">Enquire about this type</a>
+        </div>
+      </aside>
+    </div>
+
+    <div data-reveal="pending" class="plans__more">
+      <button class="mcard" type="button" data-zoom-src="assets/plans/floor.jpg"><div class="mcard__img"><img src="assets/plans/floor.jpg" alt="Typical floor plan"></div><div class="mcard__body"><div class="mcard__t">Typical floor</div><div class="mcard__s">Four residences per floor, arranged around a central core.</div></div></button>
+      <button class="mcard" type="button" data-zoom-src="assets/plans/basement.jpg"><div class="mcard__img"><img src="assets/plans/basement.jpg" alt="Basement parking plan"></div><div class="mcard__body"><div class="mcard__t">Basement parking</div><div class="mcard__s">Private, secure parking beneath the residence.</div></div></button>
+      <div class="facts">
+        <div><b>39</b><span>Residences</span></div>
+        <div><b>4</b><span>Apartments per floor</span></div>
+        <div><b>2 bed</b><span>Every residence</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" class="gal">
+  <div class="wrap">
+    <div data-reveal="pending" style="text-align:center;margin-bottom:clamp(44px,6vw,68px)">
+      <div class="eyebrow" style="margin-bottom:16px">Gallery</div>
+      <h2 class="h2">A closer look.</h2>
+    </div>
+    <div data-reveal="pending" style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)">
+      <div id="gallery-track" style="display:flex;gap:16px;width:max-content;animation:scrollx 90s linear infinite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section id="location" class="loc">
+  <div class="wrap">
+    <div data-reveal="pending" style="text-align:center;color:#FBF3E4;margin-bottom:clamp(36px,5vw,56px)">
+      <div class="eyebrow" style="color:#DCE8F2">Al Fath, Madinah</div>
+      <h2 class="h2" style="font-size:clamp(36px,5.6vw,68px)">Minutes from where it all began.</h2>
+      <p style="font-size:15px;letter-spacing:.06em;color:rgba(251,243,228,.82);margin:20px auto 0;font-weight:300;max-width:640px">The Prophet&rsquo;s Mosque, Quba, Al-Qiblatayn, Uhud &mdash; every holy site in Madinah within a short drive. Select a place to see it on the map.</p>
+    </div>
+    <div data-reveal="pending" class="loc__grid">
+      <div class="map"><div id="map" aria-label="Map of Al Fath Residence and the holy sites of Madinah"></div></div>
+      <div class="sites" id="sites"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVE ============ -->
+<section id="reserve" class="reserve">
+  <div data-reveal="pending" style="max-width:720px;margin:0 auto">
+    <div class="eyebrow" style="color:#DCE8F2;margin-bottom:22px">Register Interest</div>
+    <h2 class="h2" style="font-size:clamp(36px,5.5vw,64px);margin-bottom:26px">Own your unit today.</h2>
+    <div class="reserve__actions">
+      <a class="btn" href="mailto:stay@alfathresidence.com?subject=Al%20Fath%20Residence%20%E2%80%94%20Register%20my%20interest">Get more Information</a>
+      <a class="btn btn--ghost" href="assets/Al-Fath-Residence-Brochure.pdf" download>Download Brochure (PDF)</a>
+    </div>
+    <p style="font-size:13px;letter-spacing:.06em;color:rgba(251,245,234,.6);margin:26px 0 0;font-weight:300">Limited units available &mdash; register today for full details and pricing.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div>
+      <img src="assets/logo/lockup-cream.png" alt="Al Fath Residence" style="width:150px;margin:-20px 0 4px -14px">
+      <p style="font-size:14px;line-height:1.7;margin:0 0 22px;font-weight:300;max-width:280px">A place where you call home &mdash; minutes from the Prophet&rsquo;s Mosque.</p>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <div class="foot__col">
+        <a href="#plans">Floor Plans</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="assets/Al-Fath-Residence-Brochure.pdf" download>Brochure (PDF)</a>
+      </div>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <div class="foot__col">
+        <span>Al Fath District, Madinah,<br>Kingdom of Saudi Arabia</span>
+        <a href="tel:+966500000000">+966 50 000 0000</a>
+        <a href="mailto:stay@alfathresidence.com">stay@alfathresidence.com</a>
+      </div>
+    </div>
+    <div>
+      <h5>Legal</h5>
+      <div class="foot__col">
+        <a href="#top">Privacy Policy</a>
+        <a href="#top">Terms</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:clamp(44px,6vw,64px);padding:22px 0 30px;border-top:1px solid rgba(220,232,242,.2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;letter-spacing:.06em;color:rgba(242,233,218,.5)">
+    <span>&copy; 2026 Al Fath Residence. All rights reserved.</span>
+    <span>Madinah &middot; Saudi Arabia</span>
+  </div>
+</footer>
+
+<div class="lb" id="lightbox"><img src="" alt=""></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin=""></script>
+<script>
+// ---- floor plans ----
+var PLANS = [
+  {id:'a', name:'Type A', area:133, beds:2, baths:3, living:2, laundry:true, rooms:'Salon, family living room, kitchen, two bedrooms (one en-suite), guest bathroom and laundry.'},
+  {id:'b', name:'Type B', area:138, beds:2, baths:3, living:2, laundry:true, rooms:'Salon and living room side by side, an open kitchen, two bedrooms with their own bathrooms, guest WC and laundry.'},
+  {id:'c', name:'Type C', area:112, beds:2, baths:2, living:2, laundry:true, rooms:'A compact two-bedroom home with salon, living room, kitchen, two bathrooms and laundry.'},
+  {id:'d', name:'Type D', area:118, beds:2, baths:3, living:2, laundry:true, rooms:'Salon, living room, kitchen, two bedrooms, three bathrooms and a dedicated laundry room.'}
+];
+var SI = {
+  bed:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4"/><path d="M8 10V8h3v2M13 10V8h3v2"/></svg>',
+  bath:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 12V6a2 2 0 0 1 4 0"/><path d="M7 19v2M17 19v2"/></svg>',
+  sofa:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 13a2 2 0 0 1 2-2 2 2 0 0 1 2 2v2h12v-2a2 2 0 0 1 4 0v5H2z"/></svg>',
+  wash:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1.5"/><circle cx="12" cy="13" r="4.5"/><path d="M7 6h2M11 6h2"/></svg>',
+  area:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16"/><path d="M4 9h4M4 15h4M15 4v4M9 4v4"/></svg>'
+};
+var pick = document.getElementById('planPick');
+pick.innerHTML = PLANS.map(function(p,i){ return '<button class="pcard'+(i===0?' active':'')+'" type="button" data-plan="'+p.id+'"><div class="pcard__img"><img src="assets/plans/'+p.id+'.jpg" alt="'+p.name+' floor plan" loading="lazy"></div><div class="pcard__body"><span class="pcard__type">'+p.name+'</span><span class="pcard__area">'+p.area+' sqm</span></div></button>'; }).join('');
+
+var viewer = null, current = null, threeLoading = false;
+var stage = document.getElementById('stage'), stageView = document.getElementById('stageView'), stLoad = document.getElementById('stageLoading');
+function selectPlan(id){
+  var p = PLANS.filter(function(x){return x.id===id;})[0]; if (!p) return; current = p;
+  Array.prototype.forEach.call(pick.children, function(c){ c.classList.toggle('active', c.getAttribute('data-plan')===id); });
+  document.getElementById('stTitle').textContent = p.name;
+  document.getElementById('stArea').textContent = p.area + ' sqm';
+  document.getElementById('stSpecs').innerHTML = '<li>'+SI.area+p.area+' sqm</li><li>'+SI.bed+p.beds+' bedrooms</li><li>'+SI.bath+p.baths+' bathrooms</li><li>'+SI.sofa+'Salon + living</li>'+(p.laundry?'<li>'+SI.wash+'Laundry</li>':'');
+  document.getElementById('stRooms').textContent = p.rooms;
+  var fi = document.getElementById('stageFlatImg'); fi.src = 'assets/plans/'+p.id+'.jpg'; fi.alt = p.name+' floor plan';
+  build3d();
+}
+function build3d(){
+  if (!current) return;
+  if (!window.THREE){ if (!threeLoading){ threeLoading = true; stLoad.classList.remove('off'); var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js'; s.onload = function(){ var s2 = document.createElement('script'); s2.src = 'assets/plan3d.js'; s2.onload = build3d; document.head.appendChild(s2); }; s.onerror = function(){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); }; document.head.appendChild(s); } return; }
+  if (!window.PlanViewer) return;
+  if (!viewer){ viewer = new PlanViewer(stageView); viewer.resize(); }
+  stLoad.classList.remove('off');
+  viewer.load('assets/plans/'+current.id, function(err){ stLoad.classList.toggle('off', !err); if (err){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); } });
+}
+pick.addEventListener('click', function(e){ var b = e.target.closest('[data-plan]'); if (!b) return; stage.classList.remove('flat'); set3d(true); selectPlan(b.getAttribute('data-plan')); });
+function set3d(on){ stage.classList.toggle('flat', !on); document.getElementById('btn3d').classList.toggle('on', on); document.getElementById('btn2d').classList.toggle('on', !on); if (on && viewer) viewer.resize(); }
+document.getElementById('btn3d').addEventListener('click', function(){ set3d(true); });
+document.getElementById('btn2d').addEventListener('click', function(){ set3d(false); });
+document.getElementById('stEnlarge').addEventListener('click', function(){ if (current) openLb('assets/plans/'+current.id+'.jpg'); });
+document.getElementById('stageFlat').addEventListener('click', function(){ if (current) openLb('assets/plans/'+current.id+'.jpg'); });
+// initialise once the section is near the viewport (keeps the hero fast)
+var planIo = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ planIo.disconnect(); selectPlan('a'); } }); }, {rootMargin:'600px 0px'});
+planIo.observe(stage);
+var stageVis = new IntersectionObserver(function(es){ es.forEach(function(e){ if (viewer) viewer.visible = e.isIntersecting; }); }, {threshold:0.05});
+stageVis.observe(stage);
+
+// ---- gallery (duplicated for seamless loop) ----
+var SHOTS = [['assets/ext-front.jpg','The Residence'],['assets/int-2.jpg','Living Room'],['assets/int-3.jpg','Bedroom'],['assets/ext-street.jpg','Street View'],['assets/int-4.jpg','Bathroom'],['assets/int-1.jpg','Entrance'],['assets/ext-corner.jpg','Corner Elevation'],['assets/ext-shop.jpg','Ground-floor Retail'],['assets/ext-aerial.jpg','Aerial View'],['assets/g-parking.jpg','Basement Parking'],['assets/g-skyline.jpg','Madinah Skyline'],['assets/g-dome.jpg','The Green Dome'],['assets/g-courtyard.jpg','Prophet’s Mosque Courtyard'],['assets/g-minaret-night.jpg','Madinah at Night'],['assets/g-dew.jpg','Dawn in Madinah']];
+document.getElementById('gallery-track').innerHTML = SHOTS.concat(SHOTS).map(function(s){return '<button data-zoom-src="'+s[0]+'" style="flex:0 0 auto;width:clamp(280px,30vw,380px);height:clamp(210px,24vw,280px);position:relative;overflow:hidden;border:none;padding:0;cursor:zoom-in;border-radius:3px;background:#EFE7DA"><img src="'+s[0]+'" alt="'+s[1]+'" loading="lazy" style="width:100%;height:100%;object-fit:cover"><span style="position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;text-align:left;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:linear-gradient(180deg,transparent,rgba(20,16,12,.6))">'+s[1]+'</span></button>';}).join('');
+
+// ---- location map (Leaflet) ----
+// RESIDENCE: approximate pin inside the Al Fath district — replace with the exact coordinates when confirmed.
+var RESIDENCE = [24.4745, 39.5905];
+var SITES = [
+  {n:'The Prophet’s Mosque', ar:'المسجد النبوي', ll:[24.4672,39.6111], min:5, holy:true},
+  {n:'Masjid Al Fath (Seven Mosques)', ar:'مسجد الفتح', ll:[24.4767,39.5960], min:2, holy:true},
+  {n:'Masjid al-Qiblatayn', ar:'مسجد القبلتين', ll:[24.4842,39.5789], min:6, holy:true},
+  {n:'Masjid Quba', ar:'مسجد قباء', ll:[24.4394,39.6172], holy:true},
+  {n:'Mount Uhud & Martyrs of Uhud', ar:'جبل أحد', ll:[24.5033,39.6161], holy:true},
+  {n:'Al-Baqi Cemetery', ar:'بقيع الغرقد', ll:[24.4670,39.6165], holy:true},
+  {n:'Masjid Al-Ghamamah', ar:'مسجد الغمامة', ll:[24.4666,39.6094], holy:true},
+  {n:'Masjid Al-Ijabah', ar:'مسجد الإجابة', ll:[24.4709,39.6164], holy:true},
+  {n:'Masjid Al-Jumu’ah', ar:'مسجد الجمعة', ll:[24.4525,39.6144], holy:true},
+  {n:'Miqat Dhul Hulayfah', ar:'مسجد الميقات', ll:[24.4139,39.5432], holy:true},
+  {n:'Dr Soliman Fakeeh Hospital', ar:'مستشفى د. سليمان فقيه', ll:[24.4835,39.5892], min:3, holy:false}
+];
+function km(a,b){var R=6371,dLat=(b[0]-a[0])*Math.PI/180,dLng=(b[1]-a[1])*Math.PI/180,x=Math.sin(dLat/2),y=Math.sin(dLng/2),h=x*x+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*y*y;return 2*R*Math.asin(Math.sqrt(h))*1.25;} // ×1.25 ≈ road distance
+SITES.forEach(function(s){ s.km = km(RESIDENCE, s.ll); if (!s.min) s.min = Math.max(2, Math.round(s.km / 0.55)); });
+var map, markers = {};
+function initMap(){
+  if (map || !window.L) return;
+  map = L.map('map', {scrollWheelZoom:false, zoomControl:true}).setView([24.466, 39.598], 12);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {maxZoom:18, attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'}).addTo(map);
+  L.marker(RESIDENCE, {icon: L.divIcon({className:'', html:'<div class="pin me"><img src="assets/logo/mark-cream.png" alt=""></div>', iconSize:[26,26], iconAnchor:[13,13]}), zIndexOffset:1000}).addTo(map).bindPopup('<b>Al Fath Residence</b>Al Fath District, Madinah');
+  SITES.forEach(function(s, i){
+    var m = L.marker(s.ll, {icon: L.divIcon({className:'', html:'<div class="pin'+(s.holy?'':' h')+'"></div>', iconSize:[14,14], iconAnchor:[7,7]})}).addTo(map)
+      .bindPopup('<b>'+s.n+'</b><span style="opacity:.75">'+s.ar+'</span><br>'+s.km.toFixed(1)+' km &middot; ~'+s.min+' min drive');
+    markers[i] = m;
+    L.polyline([RESIDENCE, s.ll], {color:'#C88A5A', weight:1.2, opacity:.55, dashArray:'4 6'}).addTo(map);
+  });
+  var b = L.latLngBounds([RESIDENCE].concat(SITES.map(function(s){return s.ll;}))); map.fitBounds(b.pad(0.08));
+}
+var sitesEl = document.getElementById('sites');
+sitesEl.innerHTML = '<button class="site on" type="button" data-i="-1"><i class="me"></i><span><b>Al Fath Residence</b><small>Al Fath District &middot; Madinah</small></span><em>Home</em></button>' +
+  SITES.map(function(s,i){ return '<button class="site" type="button" data-i="'+i+'"><i class="'+(s.holy?'':'h')+'"></i><span><b>'+s.n+'</b><small>'+s.ar+' &middot; '+s.km.toFixed(1)+' km</small></span><em>~'+s.min+' min</em></button>'; }).join('');
+sitesEl.addEventListener('click', function(e){ var b = e.target.closest('[data-i]'); if (!b || !map) return; var i = +b.getAttribute('data-i');
+  Array.prototype.forEach.call(sitesEl.children, function(c){ c.classList.toggle('on', c===b); });
+  if (i < 0){ map.flyTo(RESIDENCE, 15, {duration:1.1}); } else { map.flyTo(SITES[i].ll, 15, {duration:1.1}); setTimeout(function(){ markers[i].openPopup(); }, 1150); } });
+new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ initMap(); } }); }, {rootMargin:'400px 0px'}).observe(document.getElementById('map'));
+// scroll fallback for the lazy initialisers (some embedded browsers throttle IntersectionObserver)
+(function(){ function near(el, m){ var r = el.getBoundingClientRect(); return r.top < innerHeight + m && r.bottom > -m; }
+  function check(){ if (!current && near(stage, 600)) selectPlan('a'); if (!map && near(document.getElementById('map'), 400)) initMap(); if (current && map) removeEventListener('scroll', check); }
+  addEventListener('scroll', check, {passive:true}); setTimeout(check, 800);
+  setTimeout(function(){ if (!current) selectPlan('a'); if (!map) initMap(); }, 7000); })();
+
+// ---- reveal on scroll ----
+var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.setAttribute('data-reveal','in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+requestAnimationFrame(function(){document.querySelectorAll('[data-reveal="pending"]').forEach(function(el){io.observe(el);});});
+
+// ---- lightbox ----
+var lb = document.getElementById('lightbox'), lbImg = lb.querySelector('img');
+function openLb(src){ lbImg.src = src; lb.classList.add('open'); }
+lb.addEventListener('click', function(){ lb.classList.remove('open'); });
+document.addEventListener('click', function(e){
+  var z = e.target.closest('[data-zoom]'); var b = e.target.closest('[data-zoom-src]');
+  if (z) openLb(z.getAttribute('src'));
+  else if (b) openLb(b.getAttribute('data-zoom-src'));
+});
+</script>
+</body>
+</html>
