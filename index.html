@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Al Fath Residence — Apartments in Madinah</title>
-<meta name="description" content="Al Fath Residence — 39 residences in Madinah's Al Fath district, two minutes from Masjid Al Fath and minutes from the Prophet's Mosque. Explore floor plans in 3D and register your interest.">
+<meta name="description" content="Al Fath Residence — 32 residences in Madinah's Al Fath district, two minutes from Masjid Al Fath and minutes from the Prophet's Mosque. Explore floor plans in 3D and register your interest.">
 <link rel="canonical" href="https://alfathresidence.netlify.app/">
 <meta name="theme-color" content="#1D3557">
 <link rel="icon" href="assets/logo/favicon.png" type="image/png">
@@ -91,6 +91,22 @@
   /* floor plans */
   .plans{padding:clamp(72px,10vw,128px) clamp(20px,4vw,52px);background:#EFE7DA}
   .plans__head{text-align:center;max-width:680px;margin:0 auto clamp(36px,5vw,56px)}
+  /* how to use the 3D viewer */
+  .howto{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .howto span{display:inline-flex;align-items:center;gap:11px;background:#F5EFE6;border:1px solid rgba(43,37,33,.13);border-radius:999px;padding:10px 20px 10px 14px;font-size:13px;letter-spacing:.05em;color:#5A5046}
+  .howto svg{color:#C88A5A;flex:0 0 auto}
+  @keyframes nudgeX{0%,100%{transform:translateX(-3.5px)}50%{transform:translateX(3.5px)}}
+  @keyframes nudgeY{0%,100%{transform:translateY(-2.5px)}50%{transform:translateY(2.5px)}}
+  @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.09);opacity:1}}
+  .howto .ic-drag{animation:nudgeX 1.9s ease-in-out infinite}
+  .howto .ic-zoom{animation:nudgeY 1.7s ease-in-out infinite}
+  .stage__intro{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#FBF3E4;background:rgba(16,26,44,.42);transition:opacity .7s ease;pointer-events:none}
+  .stage__intro.gone{opacity:0}
+  .stage__intro .ring{width:78px;height:78px;border-radius:50%;border:1px solid rgba(251,243,228,.45);background:rgba(16,26,44,.35);display:flex;align-items:center;justify-content:center;animation:ringPulse 2.4s ease-in-out infinite}
+  .stage__intro .ring svg{animation:nudgeX 1.9s ease-in-out infinite}
+  .stage__intro b{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+  .stage__intro em{font-style:normal;font-size:12px;letter-spacing:.05em;color:rgba(251,243,228,.7)}
+  @media (prefers-reduced-motion:reduce){.howto .ic-drag,.howto .ic-zoom,.stage__intro .ring,.stage__intro .ring svg{animation:none}}
   .plans__pick{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);margin-bottom:clamp(18px,2.4vw,28px)}
   .pcard{background:#F5EFE6;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;text-align:left;padding:0;transition:border-color .3s,transform .3s,box-shadow .3s;font:inherit;color:inherit}
   .pcard:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(29,53,87,.45)}
@@ -217,9 +233,9 @@
   <div class="nav__links">
     <a class="nav__home" href="#top">Home</a>
     <a href="#plans">Floor&nbsp;Plans</a>
-    <a href="#gallery">Gallery</a>
     <a href="#location">Location</a>
     <a href="#reserve">Contact&nbsp;Us</a>
+    <a href="#gallery">Gallery</a>
     <a class="nav__cta" href="assets/Al-Fath-Residence-Brochure.pdf" download title="Download brochure (PDF)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg><span>Brochure</span></a>
   </div>
 </nav>
@@ -288,6 +304,11 @@
       <div class="eyebrow">Floor Plans</div>
       <h2 class="h2">Four ways to call it home.</h2>
       <p class="lead" style="margin:18px auto 0;max-width:56ch">Every residence has two bedrooms, a salon and a family living room. Choose a type below to explore it as a 3D model &mdash; drag to turn it, scroll to zoom.</p>
+      <div class="howto">
+        <span><svg class="ic-drag" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 11.5V6a1.5 1.5 0 0 1 3 0v5"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L3.6 15a1.5 1.5 0 0 1 2.4-1.8L9 15.5"/><path d="M3 4.5h4M3 4.5 4.6 3M3 4.5 4.6 6" stroke-linecap="round"/><path d="M21 4.5h-4M21 4.5 19.4 3M21 4.5 19.4 6" stroke-linecap="round"/></svg>Drag to rotate</span>
+        <span><svg class="ic-zoom" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="8" y="2.5" width="8" height="14" rx="4"/><path d="M12 6v3" stroke-linecap="round"/><path d="M12 19v3M12 22l-1.6-1.6M12 22l1.6-1.6" stroke-linecap="round"/></svg>Scroll or pinch to zoom</span>
+        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11"/></svg>Switch to the flat plan any time</span>
+      </div>
     </div>
 
     <div data-reveal="pending" class="plans__pick" id="planPick"></div>
@@ -297,6 +318,10 @@
         <div class="stage__loading" id="stageLoading">Building model&hellip;</div>
         <div class="stage__flat" id="stageFlat"><img id="stageFlatImg" src="" alt=""></div>
         <div class="stage__toggle"><button id="btn3d" class="on" type="button">3D</button><button id="btn2d" type="button">Plan</button></div>
+        <div class="stage__intro" id="stageIntro">
+          <div class="ring"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 11.5V6a1.5 1.5 0 0 1 3 0v5"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L3.6 15a1.5 1.5 0 0 1 2.4-1.8L9 15.5"/></svg></div>
+          <b>Drag to explore</b><em>Turn the apartment &middot; scroll to zoom</em>
+        </div>
         <div class="stage__hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11.5V6a1.5 1.5 0 0 1 3 0v5"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L3.6 15a1.5 1.5 0 0 1 2.4-1.8L9 15.5"/></svg>Drag to rotate &middot; scroll to zoom</div>
       </div>
       <aside class="stage__info">
@@ -314,23 +339,10 @@
       <button class="mcard" type="button" data-zoom-src="assets/plans/floor.jpg"><div class="mcard__img"><img src="assets/plans/floor.jpg" alt="Typical floor plan"></div><div class="mcard__body"><div class="mcard__t">Typical floor</div><div class="mcard__s">Four residences per floor, arranged around a central core.</div></div></button>
       <button class="mcard" type="button" data-zoom-src="assets/plans/basement.jpg"><div class="mcard__img"><img src="assets/plans/basement.jpg" alt="Basement parking plan"></div><div class="mcard__body"><div class="mcard__t">Basement parking</div><div class="mcard__s">Private, secure parking beneath the residence.</div></div></button>
       <div class="facts">
-        <div><b>39</b><span>Residences</span></div>
+        <div><b>32</b><span>Residences</span></div>
         <div><b>4</b><span>Apartments per floor</span></div>
         <div><b>2 bed</b><span>Every residence</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ GALLERY ============ -->
-<section id="gallery" class="gal">
-  <div class="wrap">
-    <div data-reveal="pending" style="text-align:center;margin-bottom:clamp(44px,6vw,68px)">
-      <div class="eyebrow" style="margin-bottom:16px">Gallery</div>
-      <h2 class="h2">A closer look.</h2>
-    </div>
-    <div data-reveal="pending" style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)">
-      <div id="gallery-track" style="display:flex;gap:16px;width:max-content;animation:scrollx 90s linear infinite"></div>
     </div>
   </div>
 </section>
@@ -363,6 +375,19 @@
   </div>
 </section>
 
+<!-- ============ GALLERY ============ -->
+<section id="gallery" class="gal">
+  <div class="wrap">
+    <div data-reveal="pending" style="text-align:center;margin-bottom:clamp(44px,6vw,68px)">
+      <div class="eyebrow" style="margin-bottom:16px">Gallery</div>
+      <h2 class="h2">A closer look.</h2>
+    </div>
+    <div data-reveal="pending" style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)">
+      <div id="gallery-track" style="display:flex;gap:16px;width:max-content;animation:scrollx 90s linear infinite"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer class="foot">
   <div class="wrap foot__grid">
@@ -374,8 +399,8 @@
       <h5>Explore</h5>
       <div class="foot__col">
         <a href="#plans">Floor Plans</a>
-        <a href="#gallery">Gallery</a>
         <a href="#location">Location</a>
+        <a href="#gallery">Gallery</a>
         <a href="assets/Al-Fath-Residence-Brochure.pdf" download>Brochure (PDF)</a>
       </div>
     </div>
@@ -453,12 +478,13 @@ var PLANS = [
   {id:'c', name:'Type C', area:112, beds:2, baths:2, living:2, laundry:true, jb:[32,4,1434,699], fb:[11,12,697,359], rooms:'A compact two-bedroom home with salon, living room, kitchen, two bathrooms and laundry.'},
   {id:'d', name:'Type D', area:118, beds:2, baths:3, living:2, laundry:true, jb:[181,112,1059,799], fb:[12,12,552,402], rooms:'Salon, living room, kitchen, two bedrooms, three bathrooms and a dedicated laundry room.'}
 ];
-// Furniture volumes per plan, detected from the plan artwork: [x0,y0,x1,y1, r,g,b, areaPx] in plan-mask pixels
+// Furniture per plan, detected from the plan artwork then labelled by piece:
+// [x0,y0,x1,y1, r,g,b, areaPx, kind] in plan-mask pixels. kind: bed|sofa|counter|cab|wardrobe|tub|fix|skip
 var FURN = {
-  a:[[335,23,371,39,184,182,181,552],[502,24,515,87,161,158,156,819],[534,27,613,103,199,194,193,5065],[439,50,489,111,176,173,171,2222],[409,60,426,83,173,170,168,382],[644,60,654,115,209,217,222,462],[281,90,303,117,211,210,207,616],[614,106,633,126,149,145,143,305],[578,145,643,162,164,161,159,1023],[575,175,644,191,156,154,153,977],[644,210,652,263,202,212,217,425],[404,221,423,278,141,137,136,1038],[439,228,489,312,178,177,175,3704],[536,228,613,312,195,192,190,5568],[33,230,90,312,168,166,164,3235],[108,234,241,320,148,145,144,5528],[502,242,521,312,165,162,160,1012],[330,313,387,320,196,206,213,357]],
-  b:[[26,15,134,130,181,178,177,6843],[369,15,419,21,195,203,210,283],[172,16,291,157,180,177,176,10881],[463,24,503,48,176,174,175,985],[333,44,417,131,191,188,189,6782],[540,44,621,131,206,203,203,6374],[478,59,503,107,154,154,155,1051],[515,170,624,215,165,163,164,3827],[228,212,317,300,169,164,163,2481],[86,220,131,300,151,149,151,2036],[127,223,162,254,147,146,147,968]],
-  c:[[232,21,287,27,208,214,220,360],[383,21,439,27,205,211,216,354],[565,32,621,43,203,211,216,370],[238,54,309,118,185,180,177,3751],[68,71,127,78,207,213,218,478],[344,86,358,127,136,132,128,288],[634,106,658,152,136,131,128,687],[160,134,171,159,196,191,188,230],[44,136,105,187,187,182,179,2183],[239,177,310,182,185,181,180,325],[581,211,631,264,177,172,169,1989],[456,236,481,263,191,189,186,685],[242,253,325,305,182,180,178,3784],[219,257,229,300,174,171,170,320],[559,271,615,317,171,167,166,1502],[394,289,423,305,172,168,166,497]],
-  d:[[264,16,320,22,212,217,222,349],[248,30,355,169,170,166,163,10439],[30,88,73,159,174,172,171,2175],[89,94,123,167,164,162,160,1775],[372,129,435,179,177,176,175,3152],[448,129,547,179,180,177,177,4072],[24,199,143,247,174,172,173,4848],[217,252,264,390,190,188,188,6056],[278,252,375,399,194,193,193,11479],[15,292,74,370,177,176,176,2922],[492,302,513,351,150,145,142,910],[89,306,135,377,162,159,156,2141],[181,308,202,382,184,180,180,1545],[71,392,127,398,195,203,209,399],[431,392,489,398,194,203,208,413]]
+  a:[[335,23,371,39,184,182,181,552,'cab'],[502,24,515,87,161,158,156,819,'wardrobe'],[534,27,613,103,199,194,193,5065,'bed'],[439,50,489,111,176,173,171,2222,'tub'],[409,60,426,83,173,170,168,382,'fix'],[644,60,654,115,209,217,222,462,'skip'],[281,90,303,117,211,210,207,616,'fix'],[614,106,633,126,149,145,143,305,'fix'],[578,145,643,162,164,161,159,1023,'wardrobe'],[575,175,644,191,156,154,153,977,'wardrobe'],[644,210,652,263,202,212,217,425,'skip'],[404,221,423,278,141,137,136,1038,'fix'],[439,228,489,312,178,177,175,3704,'tub'],[536,228,613,312,195,192,190,5568,'bed'],[33,230,90,312,168,166,164,3235,'tub'],[108,234,241,320,148,145,144,5528,'sofa'],[502,242,521,312,165,162,160,1012,'wardrobe'],[330,313,387,320,196,206,213,357,'skip']],
+  b:[[26,15,134,130,181,178,177,6843,'sofa'],[369,15,419,21,195,203,210,283,'skip'],[172,16,291,157,180,177,176,10881,'sofa'],[463,24,503,48,176,174,175,985,'fix'],[333,44,417,131,191,188,189,6782,'bed'],[540,44,621,131,206,203,203,6374,'bed'],[478,59,503,107,154,154,155,1051,'fix'],[515,170,624,215,165,163,164,3827,'tub'],[228,212,317,300,169,164,163,2481,'counter'],[86,220,131,300,151,149,151,2036,'tub'],[127,223,162,254,147,146,147,968,'fix']],
+  c:[[232,21,287,27,208,214,220,360,'skip'],[383,21,439,27,205,211,216,354,'skip'],[565,32,621,43,203,211,216,370,'skip'],[238,54,309,118,185,180,177,3751,'bed'],[68,71,127,78,207,213,218,478,'skip'],[344,86,358,127,136,132,128,288,'fix'],[634,106,658,152,136,131,128,687,'fix'],[160,134,171,159,196,191,188,230,'fix'],[44,136,105,187,187,182,179,2183,'bed'],[239,177,310,182,185,181,180,325,'wardrobe'],[581,211,631,264,177,172,169,1989,'tub'],[456,236,481,263,191,189,186,685,'fix'],[242,253,325,305,182,180,178,3784,'tub'],[219,257,229,300,174,171,170,320,'skip'],[559,271,615,317,171,167,166,1502,'tub'],[394,289,423,305,172,168,166,497,'fix']],
+  d:[[264,16,320,22,212,217,222,349,'skip'],[248,30,355,169,170,166,163,10439,'sofa'],[30,88,73,159,174,172,171,2175,'bed'],[89,94,123,167,164,162,160,1775,'bed'],[372,129,435,179,177,176,175,3152,'tub'],[448,129,547,179,180,177,177,4072,'tub'],[24,199,143,247,174,172,173,4848,'bed'],[217,252,264,390,190,188,188,6056,'tub'],[278,252,375,399,194,193,193,11479,'counter'],[15,292,74,370,177,176,176,2922,'bed'],[492,302,513,351,150,145,142,910,'fix'],[89,306,135,377,162,159,156,2141,'bed'],[181,308,202,382,184,180,180,1545,'wardrobe'],[71,392,127,398,195,203,209,399,'skip'],[431,392,489,398,194,203,208,413,'skip']]
 };
 var SI = {
   bed:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4"/><path d="M8 10V8h3v2M13 10V8h3v2"/></svg>',
@@ -484,14 +510,22 @@ function selectPlan(id){
 }
 function build3d(){
   if (!current) return;
-  if (!window.THREE){ if (!threeLoading){ threeLoading = true; stLoad.classList.remove('off'); var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js'; s.onload = function(){ var s2 = document.createElement('script'); s2.src = 'assets/plan3d.js?v=5'; s2.onload = build3d; document.head.appendChild(s2); }; s.onerror = function(){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); }; document.head.appendChild(s); } return; }
+  if (!window.THREE){ if (!threeLoading){ threeLoading = true; stLoad.classList.remove('off'); var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js'; s.onload = function(){ var s2 = document.createElement('script'); s2.src = 'assets/plan3d.js?v=7'; s2.onload = build3d; document.head.appendChild(s2); }; s.onerror = function(){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); }; document.head.appendChild(s); } return; }
   if (!window.PlanViewer) return;
   if (!viewer){ viewer = new PlanViewer(stageView); viewer.resize(); }
   stLoad.classList.remove('off');
-  viewer.load('assets/plans/'+current.id, {tex:'assets/plans/'+current.id+'.jpg', jb:current.jb, fb:current.fb, furn:FURN[current.id]}, function(err){ stLoad.classList.toggle('off', !err); if (err){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); } });
+  viewer.load('assets/plans/'+current.id, {tex:'assets/plans/'+current.id+'.jpg', jb:current.jb, fb:current.fb, furn:FURN[current.id], areaM2:current.area}, function(err){ stLoad.classList.toggle('off', !err); if (err){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); } });
 }
 pick.addEventListener('click', function(e){ var b = e.target.closest('[data-plan]'); if (!b) return; stage.classList.remove('flat'); set3d(true); selectPlan(b.getAttribute('data-plan')); });
 function set3d(on){ stage.classList.toggle('flat', !on); document.getElementById('btn3d').classList.toggle('on', on); document.getElementById('btn2d').classList.toggle('on', !on); if (on && viewer) viewer.resize(); }
+// the "drag to explore" badge clears on the first interaction, or on its own after a few seconds
+(function(){
+  var intro = document.getElementById('stageIntro'), gone = false;
+  function clear(){ if (gone) return; gone = true; intro.classList.add('gone'); setTimeout(function(){ intro.style.display = 'none'; }, 800); }
+  stageView.addEventListener('pointerdown', clear); stageView.addEventListener('wheel', clear, {passive:true});
+  var stageVisIntro = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) setTimeout(clear, 6000); }); }, {threshold:0.4});
+  stageVisIntro.observe(stage);
+})();
 document.getElementById('btn3d').addEventListener('click', function(){ set3d(true); });
 document.getElementById('btn2d').addEventListener('click', function(){ set3d(false); });
 document.getElementById('stEnlarge').addEventListener('click', function(){ if (current) openLb('assets/plans/'+current.id+'.jpg'); });
