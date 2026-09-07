@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stately-dusk-d14acd.netlify.app/sitemap.xml
+Sitemap: https://alfathresidence.netlify.app/sitemap.xml
