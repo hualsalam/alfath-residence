@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Al Fath Residence">
 <meta property="og:title" content="Al Fath Residence — Apartments in Madinah">
-<meta property="og:description" content="A place where you call home. Minutes from the Prophet's Mosque.">
+<meta property="og:description" content="A Place Where Your Soul Calls Home. Minutes from the Prophet's Mosque.">
 <meta property="og:url" content="https://alfathresidence.netlify.app/">
 <meta property="og:image" content="https://alfathresidence.netlify.app/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Al Fath Residence — Apartments in Madinah">
-<meta name="twitter:description" content="A place where you call home. Minutes from the Prophet's Mosque.">
+<meta name="twitter:description" content="A Place Where Your Soul Calls Home. Minutes from the Prophet's Mosque.">
 <meta name="twitter:image" content="https://alfathresidence.netlify.app/assets/og.jpg">
 
 <script type="application/ld+json">
@@ -102,15 +102,15 @@
   .pcard__area{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A7C6C}
   .stage{background:#1D3557;border-radius:10px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(0,0,0,.6);display:grid;grid-template-columns:1fr 300px}
   .stage__view{position:relative;min-height:clamp(380px,46vw,600px);background:radial-gradient(120% 90% at 50% 30%,#2a4a73 0%,#1D3557 55%,#152741 100%)}
-  .stage__view canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
-  .stage__hint{position:absolute;left:18px;bottom:16px;display:inline-flex;align-items:center;gap:8px;color:rgba(251,247,240,.75);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;pointer-events:none}
+  .stage__view canvas{position:absolute;inset:0;z-index:0;width:100%!important;height:100%!important;display:block}
+  .stage__hint{position:absolute;z-index:3;left:18px;bottom:16px;display:inline-flex;align-items:center;gap:8px;color:rgba(251,247,240,.75);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;pointer-events:none}
   .stage__hint svg{opacity:.8}
-  .stage__loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(251,247,240,.7);font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:opacity .4s;pointer-events:none}
+  .stage__loading{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;color:rgba(251,247,240,.7);font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:opacity .4s;pointer-events:none}
   .stage__loading.off{opacity:0}
-  .stage__toggle{position:absolute;right:16px;top:16px;display:flex;background:rgba(16,26,44,.55);border:1px solid rgba(251,247,240,.28);border-radius:999px;padding:3px;backdrop-filter:blur(6px)}
+  .stage__toggle{position:absolute;z-index:3;right:16px;top:16px;display:flex;background:rgba(16,26,44,.55);border:1px solid rgba(251,247,240,.28);border-radius:999px;padding:3px;backdrop-filter:blur(6px)}
   .stage__toggle button{font:inherit;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,247,240,.75);background:transparent;border:0;padding:7px 14px;border-radius:999px;cursor:pointer}
   .stage__toggle button.on{background:#C88A5A;color:#fff}
-  .stage__flat{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:clamp(18px,3vw,40px);background:#F5EFE6;cursor:zoom-in}
+  .stage__flat{position:absolute;inset:0;z-index:2;display:none;align-items:center;justify-content:center;padding:clamp(18px,3vw,40px);background:#F5EFE6;cursor:zoom-in}
   .stage__flat img{max-height:100%;object-fit:contain}
   .stage.flat .stage__flat{display:flex}
   .stage__info{padding:clamp(24px,3vw,36px) clamp(22px,2.6vw,32px);color:#FBF3E4;display:flex;flex-direction:column;gap:18px;border-left:1px solid rgba(220,232,242,.14)}
@@ -175,6 +175,38 @@
   .foot__col a{color:rgba(242,233,218,.72)}
   .foot__col a:hover{color:#C88A5A}
   @media (max-width:820px){.foot__grid{grid-template-columns:1fr 1fr}}
+  /* enquiry modal */
+  .mdl{position:fixed;inset:0;z-index:200;background:rgba(15,23,40,.72);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:clamp(14px,4vh,48px) 16px;overflow-y:auto}
+  .mdl.open{display:flex}
+  .mdl__card{position:relative;width:100%;max-width:640px;background:#F5EFE6;border-radius:10px;box-shadow:0 50px 110px -30px rgba(0,0,0,.7);overflow:hidden;margin:auto}
+  .mdl__head{background:#1D3557;color:#FBF3E4;padding:clamp(22px,3vw,30px) clamp(22px,3.4vw,34px)}
+  .mdl__head .eyebrow{color:#DCE8F2;margin-bottom:10px}
+  .mdl__head h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(26px,3.4vw,34px);line-height:1.1;margin:0}
+  .mdl__head p{margin:8px 0 0;font-size:13.5px;font-weight:300;color:rgba(251,243,228,.75)}
+  .mdl__x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(251,243,228,.35);background:rgba(0,0,0,.15);color:#FBF3E4;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+  .mdl__x:hover{background:rgba(0,0,0,.4)}
+  .mdl__body{padding:clamp(22px,3.4vw,32px)}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+  .fld{display:flex;flex-direction:column;gap:7px}
+  .fld--full{grid-column:1 / -1}
+  .fld label{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#8A7C6C;font-weight:500}
+  .fld label i{color:#C88A5A;font-style:normal}
+  .fld input,.fld select{font:inherit;font-size:15px;color:#2B2521;background:#fff;border:1px solid rgba(43,37,33,.18);border-radius:5px;padding:11px 12px;width:100%;transition:border-color .2s,box-shadow .2s}
+  .fld input:focus,.fld select:focus{outline:none;border-color:#457B9D;box-shadow:0 0 0 3px rgba(69,124,157,.16)}
+  .fld input:invalid:not(:placeholder-shown){border-color:#C0563F}
+  .phone{display:grid;grid-template-columns:132px 1fr;gap:8px}
+  .phone select{padding-right:4px}
+  .mdl__actions{display:flex;align-items:center;gap:14px;margin-top:24px;flex-wrap:wrap}
+  .mdl__note{font-size:12.5px;color:#8A7C6C;font-weight:300;flex:1 1 180px;line-height:1.5}
+  .mdl__msg{margin-top:16px;font-size:14px;line-height:1.6;padding:12px 14px;border-radius:6px;display:none}
+  .mdl__msg.err{display:block;background:rgba(192,86,63,.12);color:#8E3D2C;border:1px solid rgba(192,86,63,.3)}
+  .mdl__done{display:none;text-align:center;padding:clamp(30px,5vw,54px) clamp(22px,3.4vw,34px)}
+  .mdl__done svg{margin:0 auto 18px;color:#457B9D}
+  .mdl__done h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;margin:0 0 12px}
+  .mdl__done p{margin:0 0 8px;font-size:14.5px;line-height:1.7;color:#5A5046;font-weight:300}
+  .mdl.done .mdl__body{display:none}
+  .mdl.done .mdl__done{display:block}
+  @media (max-width:560px){.fgrid{grid-template-columns:1fr}.phone{grid-template-columns:112px 1fr}}
 </style>
 </head>
 <body id="top">
@@ -200,7 +232,7 @@
   <div class="hero__inner">
     <p class="hero__eyebrow">Al Fath, Madinah</p>
     <h1>Your home in Madinah.</h1>
-    <p class="hero__sub">A place where you call home.</p>
+    <p class="hero__sub">A Place Where Your Soul Calls Home.</p>
     <div class="hero__actions">
       <a class="btn" href="#reserve">Register Your Interest</a>
       <a class="btn btn--ghost" href="assets/Al-Fath-Residence-Brochure.pdf" download>
@@ -273,7 +305,7 @@
         <p class="stage__rooms" id="stRooms"></p>
         <div class="stage__actions">
           <button class="btn" id="stEnlarge" type="button">View full plan</button>
-          <a class="btn btn--ghost" href="#reserve">Enquire about this type</a>
+          <button class="btn btn--ghost" id="stEnquire" type="button">Enquire about this type</button>
         </div>
       </aside>
     </div>
@@ -336,7 +368,7 @@
   <div class="wrap foot__grid">
     <div>
       <img src="assets/logo/lockup-cream.png" alt="Al Fath Residence" style="width:150px;margin:-20px 0 4px -14px">
-      <p style="font-size:14px;line-height:1.7;margin:0 0 22px;font-weight:300;max-width:280px">A place where you call home &mdash; minutes from the Prophet&rsquo;s Mosque.</p>
+      <p style="font-size:14px;line-height:1.7;margin:0 0 22px;font-weight:300;max-width:280px">A Place Where Your Soul Calls Home &mdash; minutes from the Prophet&rsquo;s Mosque.</p>
     </div>
     <div>
       <h5>Explore</h5>
@@ -371,6 +403,46 @@
 
 <div class="lb" id="lightbox"><img alt=""></div>
 
+<!-- ============ ENQUIRY MODAL ============ -->
+<div class="mdl" id="enquire" role="dialog" aria-modal="true" aria-labelledby="enqTitle">
+  <div class="mdl__card">
+    <button class="mdl__x" id="enqClose" type="button" aria-label="Close">&times;</button>
+    <div class="mdl__head">
+      <div class="eyebrow">Register Interest</div>
+      <h3 id="enqTitle">Enquire about <span id="enqType">this residence</span></h3>
+      <p>Leave your details and our sales team will contact you with pricing and availability.</p>
+    </div>
+    <div class="mdl__body">
+      <form id="enqForm" novalidate>
+        <div class="fgrid">
+          <div class="fld"><label for="fName">First name <i>*</i></label><input id="fName" name="First name" type="text" autocomplete="given-name" placeholder="First name" required></div>
+          <div class="fld"><label for="lName">Last name <i>*</i></label><input id="lName" name="Last name" type="text" autocomplete="family-name" placeholder="Last name" required></div>
+          <div class="fld"><label for="eMail">Email <i>*</i></label><input id="eMail" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+          <div class="fld"><label for="phNum">Phone <i>*</i></label>
+            <div class="phone"><select id="phCode" name="Phone country code" aria-label="Country dialling code"></select><input id="phNum" name="Phone number" type="tel" inputmode="tel" autocomplete="tel" placeholder="5X XXX XXXX" required></div>
+          </div>
+          <div class="fld"><label for="nat">Nationality <i>*</i></label><select id="nat" name="Nationality" required></select></div>
+          <div class="fld"><label for="res">Country of residence <i>*</i></label><select id="res" name="Country of residence" required></select></div>
+          <div class="fld fld--full"><label for="rel">Religion <i>*</i></label><select id="rel" name="Religion" required>
+            <option value="" selected disabled>Select…</option><option>Muslim</option><option>Christian</option><option>Other</option></select></div>
+        </div>
+        <div class="mdl__msg" id="enqMsg"></div>
+        <div class="mdl__actions">
+          <button class="btn" id="enqSubmit" type="submit">Submit enquiry</button>
+          <span class="mdl__note">We use your details only to answer this enquiry.</span>
+        </div>
+      </form>
+    </div>
+    <div class="mdl__done">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>
+      <h4>Thank you.</h4>
+      <p id="enqDoneMsg">Your enquiry has been sent. Our team will be in touch shortly.</p>
+      <p style="font-size:13px;color:#8A7C6C">Reference <b id="enqRef">AF-000000</b></p>
+      <button class="btn btn--navy" id="enqAgain" type="button" style="margin-top:18px">Close</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin=""></script>
 <script>
 // ---- floor plans ----
@@ -381,6 +453,13 @@ var PLANS = [
   {id:'c', name:'Type C', area:112, beds:2, baths:2, living:2, laundry:true, jb:[32,4,1434,699], fb:[11,12,697,359], rooms:'A compact two-bedroom home with salon, living room, kitchen, two bathrooms and laundry.'},
   {id:'d', name:'Type D', area:118, beds:2, baths:3, living:2, laundry:true, jb:[181,112,1059,799], fb:[12,12,552,402], rooms:'Salon, living room, kitchen, two bedrooms, three bathrooms and a dedicated laundry room.'}
 ];
+// Furniture volumes per plan, detected from the plan artwork: [x0,y0,x1,y1, r,g,b, areaPx] in plan-mask pixels
+var FURN = {
+  a:[[335,23,371,39,184,182,181,552],[502,24,515,87,161,158,156,819],[534,27,613,103,199,194,193,5065],[439,50,489,111,176,173,171,2222],[409,60,426,83,173,170,168,382],[644,60,654,115,209,217,222,462],[281,90,303,117,211,210,207,616],[614,106,633,126,149,145,143,305],[578,145,643,162,164,161,159,1023],[575,175,644,191,156,154,153,977],[644,210,652,263,202,212,217,425],[404,221,423,278,141,137,136,1038],[439,228,489,312,178,177,175,3704],[536,228,613,312,195,192,190,5568],[33,230,90,312,168,166,164,3235],[108,234,241,320,148,145,144,5528],[502,242,521,312,165,162,160,1012],[330,313,387,320,196,206,213,357]],
+  b:[[26,15,134,130,181,178,177,6843],[369,15,419,21,195,203,210,283],[172,16,291,157,180,177,176,10881],[463,24,503,48,176,174,175,985],[333,44,417,131,191,188,189,6782],[540,44,621,131,206,203,203,6374],[478,59,503,107,154,154,155,1051],[515,170,624,215,165,163,164,3827],[228,212,317,300,169,164,163,2481],[86,220,131,300,151,149,151,2036],[127,223,162,254,147,146,147,968]],
+  c:[[232,21,287,27,208,214,220,360],[383,21,439,27,205,211,216,354],[565,32,621,43,203,211,216,370],[238,54,309,118,185,180,177,3751],[68,71,127,78,207,213,218,478],[344,86,358,127,136,132,128,288],[634,106,658,152,136,131,128,687],[160,134,171,159,196,191,188,230],[44,136,105,187,187,182,179,2183],[239,177,310,182,185,181,180,325],[581,211,631,264,177,172,169,1989],[456,236,481,263,191,189,186,685],[242,253,325,305,182,180,178,3784],[219,257,229,300,174,171,170,320],[559,271,615,317,171,167,166,1502],[394,289,423,305,172,168,166,497]],
+  d:[[264,16,320,22,212,217,222,349],[248,30,355,169,170,166,163,10439],[30,88,73,159,174,172,171,2175],[89,94,123,167,164,162,160,1775],[372,129,435,179,177,176,175,3152],[448,129,547,179,180,177,177,4072],[24,199,143,247,174,172,173,4848],[217,252,264,390,190,188,188,6056],[278,252,375,399,194,193,193,11479],[15,292,74,370,177,176,176,2922],[492,302,513,351,150,145,142,910],[89,306,135,377,162,159,156,2141],[181,308,202,382,184,180,180,1545],[71,392,127,398,195,203,209,399],[431,392,489,398,194,203,208,413]]
+};
 var SI = {
   bed:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4"/><path d="M8 10V8h3v2M13 10V8h3v2"/></svg>',
   bath:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 12V6a2 2 0 0 1 4 0"/><path d="M7 19v2M17 19v2"/></svg>',
@@ -405,11 +484,11 @@ function selectPlan(id){
 }
 function build3d(){
   if (!current) return;
-  if (!window.THREE){ if (!threeLoading){ threeLoading = true; stLoad.classList.remove('off'); var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js'; s.onload = function(){ var s2 = document.createElement('script'); s2.src = 'assets/plan3d.js?v=3'; s2.onload = build3d; document.head.appendChild(s2); }; s.onerror = function(){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); }; document.head.appendChild(s); } return; }
+  if (!window.THREE){ if (!threeLoading){ threeLoading = true; stLoad.classList.remove('off'); var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js'; s.onload = function(){ var s2 = document.createElement('script'); s2.src = 'assets/plan3d.js?v=5'; s2.onload = build3d; document.head.appendChild(s2); }; s.onerror = function(){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); }; document.head.appendChild(s); } return; }
   if (!window.PlanViewer) return;
   if (!viewer){ viewer = new PlanViewer(stageView); viewer.resize(); }
   stLoad.classList.remove('off');
-  viewer.load('assets/plans/'+current.id, {tex:'assets/plans/'+current.id+'.jpg', jb:current.jb, fb:current.fb}, function(err){ stLoad.classList.toggle('off', !err); if (err){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); } });
+  viewer.load('assets/plans/'+current.id, {tex:'assets/plans/'+current.id+'.jpg', jb:current.jb, fb:current.fb, furn:FURN[current.id]}, function(err){ stLoad.classList.toggle('off', !err); if (err){ stLoad.textContent = '3D unavailable — showing plan'; stage.classList.add('flat'); } });
 }
 pick.addEventListener('click', function(e){ var b = e.target.closest('[data-plan]'); if (!b) return; stage.classList.remove('flat'); set3d(true); selectPlan(b.getAttribute('data-plan')); });
 function set3d(on){ stage.classList.toggle('flat', !on); document.getElementById('btn3d').classList.toggle('on', on); document.getElementById('btn2d').classList.toggle('on', !on); if (on && viewer) viewer.resize(); }
@@ -471,6 +550,80 @@ new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersect
   function check(){ if (!current && near(stage, 600)) selectPlan('a'); if (!map && near(document.getElementById('map'), 400)) initMap(); if (current && map) removeEventListener('scroll', check); }
   addEventListener('scroll', check, {passive:true}); setTimeout(check, 800);
   setTimeout(function(){ if (!current) selectPlan('a'); if (!map) initMap(); }, 7000); })();
+
+// ---- enquiry modal ----
+// DELIVERY: paste a Web3Forms access key (free, from web3forms.com, tied to the inbox that should
+// receive leads) into accessKey. While it is empty the form validates and confirms but sends nothing.
+var ENQ = { accessKey: '', toName: 'Al Fath Residence Sales', subject: 'Al Fath Residence — new enquiry' };
+
+var COUNTRIES = ('Afghanistan|93,Albania|355,Algeria|213,Andorra|376,Angola|244,Antigua and Barbuda|1,Argentina|54,Armenia|374,Australia|61,Austria|43,Azerbaijan|994,Bahamas|1,Bahrain|973,Bangladesh|880,Barbados|1,Belarus|375,Belgium|32,Belize|501,Benin|229,Bhutan|975,Bolivia|591,Bosnia and Herzegovina|387,Botswana|267,Brazil|55,Brunei|673,Bulgaria|359,Burkina Faso|226,Burundi|257,Cambodia|855,Cameroon|237,Canada|1,Cape Verde|238,Central African Republic|236,Chad|235,Chile|56,China|86,Colombia|57,Comoros|269,Congo|242,Congo (DRC)|243,Costa Rica|506,Croatia|385,Cuba|53,Cyprus|357,Czechia|420,Denmark|45,Djibouti|253,Dominica|1,Dominican Republic|1,Ecuador|593,Egypt|20,El Salvador|503,Equatorial Guinea|240,Eritrea|291,Estonia|372,Eswatini|268,Ethiopia|251,Fiji|679,Finland|358,France|33,Gabon|241,Gambia|220,Georgia|995,Germany|49,Ghana|233,Greece|30,Grenada|1,Guatemala|502,Guinea|224,Guinea-Bissau|245,Guyana|592,Haiti|509,Honduras|504,Hong Kong|852,Hungary|36,Iceland|354,India|91,Indonesia|62,Iran|98,Iraq|964,Ireland|353,Italy|39,Ivory Coast|225,Jamaica|1,Japan|81,Jordan|962,Kazakhstan|7,Kenya|254,Kiribati|686,Kosovo|383,Kuwait|965,Kyrgyzstan|996,Laos|856,Latvia|371,Lebanon|961,Lesotho|266,Liberia|231,Libya|218,Liechtenstein|423,Lithuania|370,Luxembourg|352,Macau|853,Madagascar|261,Malawi|265,Malaysia|60,Maldives|960,Mali|223,Malta|356,Mauritania|222,Mauritius|230,Mexico|52,Moldova|373,Monaco|377,Mongolia|976,Montenegro|382,Morocco|212,Mozambique|258,Myanmar|95,Namibia|264,Nepal|977,Netherlands|31,New Zealand|64,Nicaragua|505,Niger|227,Nigeria|234,North Macedonia|389,Norway|47,Oman|968,Pakistan|92,Palestine|970,Panama|507,Papua New Guinea|675,Paraguay|595,Peru|51,Philippines|63,Poland|48,Portugal|351,Qatar|974,Romania|40,Russia|7,Rwanda|250,Saint Lucia|1,Samoa|685,San Marino|378,Saudi Arabia|966,Senegal|221,Serbia|381,Seychelles|248,Sierra Leone|232,Singapore|65,Slovakia|421,Slovenia|386,Solomon Islands|677,Somalia|252,South Africa|27,South Korea|82,South Sudan|211,Spain|34,Sri Lanka|94,Sudan|249,Suriname|597,Sweden|46,Switzerland|41,Syria|963,Taiwan|886,Tajikistan|992,Tanzania|255,Thailand|66,Timor-Leste|670,Togo|228,Tonga|676,Trinidad and Tobago|1,Tunisia|216,Turkey|90,Turkmenistan|993,Uganda|256,Ukraine|380,United Arab Emirates|971,United Kingdom|44,United States|1,Uruguay|598,Uzbekistan|998,Vanuatu|678,Vatican City|39,Venezuela|58,Vietnam|84,Yemen|967,Zambia|260,Zimbabwe|263').split(',').map(function(s){ var p = s.split('|'); return {n: p[0], d: p[1]}; });
+
+(function(){
+  var mdl = document.getElementById('enquire'), form = document.getElementById('enqForm');
+  var msg = document.getElementById('enqMsg'), submit = document.getElementById('enqSubmit');
+  var natSel = document.getElementById('nat'), resSel = document.getElementById('res'), codeSel = document.getElementById('phCode');
+  var opts = '<option value="" selected disabled>Select…</option>' + COUNTRIES.map(function(c){ return '<option>' + c.n + '</option>'; }).join('');
+  natSel.innerHTML = opts; resSel.innerHTML = opts;
+  codeSel.innerHTML = COUNTRIES.slice().sort(function(a, b){ return (+a.d) - (+b.d) || a.n.localeCompare(b.n); })
+    .map(function(c){ return '<option value="+' + c.d + '" data-c="' + c.n + '"' + (c.n === 'Saudi Arabia' ? ' selected' : '') + '>+' + c.d + ' ' + c.n + '</option>'; }).join('');
+
+  function open(typeName){
+    document.getElementById('enqType').textContent = typeName || 'this residence';
+    mdl.classList.remove('done'); mdl.classList.add('open'); msg.className = 'mdl__msg';
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ document.getElementById('fName').focus(); }, 60);
+  }
+  function close(){ mdl.classList.remove('open'); document.body.style.overflow = ''; }
+  window.openEnquiry = open;
+
+  document.getElementById('enqClose').addEventListener('click', close);
+  document.getElementById('enqAgain').addEventListener('click', close);
+  mdl.addEventListener('click', function(e){ if (e.target === mdl) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && mdl.classList.contains('open')) close(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'mdl__msg';
+    var missing = [].slice.call(form.querySelectorAll('[required]')).filter(function(el){ return !el.value.trim(); });
+    if (missing.length || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(document.getElementById('eMail').value)) {
+      msg.className = 'mdl__msg err';
+      msg.textContent = missing.length ? 'Please complete every field marked with an asterisk.' : 'Please enter a valid email address.';
+      (missing[0] || document.getElementById('eMail')).focus();
+      return;
+    }
+    var ref = 'AF-' + String(Math.floor(Math.random() * 900000) + 100000);
+    var data = {
+      'First name': document.getElementById('fName').value.trim(),
+      'Last name': document.getElementById('lName').value.trim(),
+      'Email': document.getElementById('eMail').value.trim(),
+      'Phone': codeSel.value + ' ' + document.getElementById('phNum').value.trim(),
+      'Nationality': natSel.value, 'Country of residence': resSel.value,
+      'Religion': document.getElementById('rel').value,
+      'Apartment type': document.getElementById('enqType').textContent,
+      'Reference': ref
+    };
+    var done = function(sent){
+      document.getElementById('enqRef').textContent = ref;
+      document.getElementById('enqDoneMsg').textContent = sent
+        ? 'Your enquiry has been sent. Our team will be in touch shortly.'
+        : 'Your details were captured, but delivery is not configured yet — no email was sent. Add a Web3Forms access key to enable it.';
+      mdl.classList.add('done'); form.reset(); submit.disabled = false; submit.textContent = 'Submit enquiry';
+    };
+    if (!ENQ.accessKey) { console.log('Al Fath enquiry (demo mode, not sent):', data); done(false); return; }
+    submit.disabled = true; submit.textContent = 'Sending…';
+    var payload = Object.assign({access_key: ENQ.accessKey, subject: ENQ.subject, from_name: ENQ.toName}, data);
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).then(function(j){
+      if (j && j.success) done(true); else throw new Error(j && j.message || 'Submission failed');
+    }).catch(function(err){
+      msg.className = 'mdl__msg err';
+      msg.textContent = 'Sorry — we could not send that (' + err.message + '). Please email stay@alfathresidence.com instead.';
+      submit.disabled = false; submit.textContent = 'Submit enquiry';
+    });
+  });
+})();
+document.getElementById('stEnquire').addEventListener('click', function(){ openEnquiry(current ? current.name : null); });
 
 // ---- reveal on scroll ----
 var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.setAttribute('data-reveal','in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});

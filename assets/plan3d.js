@@ -92,7 +92,14 @@
   Viewer.prototype.clear = function(){
     if (!this.model) return;
     this.group.remove(this.model);
-    this.model.traverse(function(o){ if (o.geometry) o.geometry.dispose(); if (o.material){ if (o.material.map) o.material.map.dispose(); if (o.material.alphaMap) o.material.alphaMap.dispose(); o.material.dispose(); } });
+    this.model.traverse(function(o){
+      if (o.geometry) o.geometry.dispose();
+      if (!o.material) return;
+      // furniture meshes carry a per-face material array
+      (Array.isArray(o.material) ? o.material : [o.material]).forEach(function(m){
+        if (m.map) m.map.dispose(); if (m.alphaMap) m.alphaMap.dispose(); m.dispose();
+      });
+    });
     this.model = null;
   };
   // Composes the hi-res plan drawing onto the mask grid: meta.jb = content bbox in the JPG, meta.fb = footprint bbox in the mask.
@@ -135,6 +142,29 @@
       floor.rotation.x = -Math.PI / 2; floor.position.y = SLAB_H + 0.012; floor.receiveShadow = true;
       floor.position.x = (imgs[1].width * u - WORLD_W) / 2; floor.position.z = (imgs[1].height * u - planD) / 2;
       model.add(floor);
+
+      // Furniture: each detected blob becomes a volume whose top face carries that patch of the
+      // plan artwork, so beds/sofas/counters read as objects with height rather than flat drawing.
+      if (meta && meta.furn && meta.furn.length){
+        var fw = imgs[1].width, fh = imgs[1].height, footArea = fw * fh;
+        var topMat = new THREE.MeshStandardMaterial({map: tex, roughness: 0.72});
+        meta.furn.forEach(function(f){
+          var x0 = f[0], y0 = f[1], x1 = f[2], y1 = f[3];
+          var bw = (x1 - x0) * u, bd = (y1 - y0) * u, minSide = Math.min(x1 - x0, y1 - y0);
+          var h = minSide <= 8 ? 0.12 : (f[7] / footArea > 0.03 ? 0.40 : 0.52);
+          var geo = new THREE.BoxGeometry(bw, h, bd);
+          var uv = geo.attributes.uv;
+          var tu0 = x0 / fw, tu1 = x1 / fw, tv0 = 1 - y1 / fh, tv1 = 1 - y0 / fh;
+          uv.setXY(8, tu0, tv1); uv.setXY(9, tu1, tv1); uv.setXY(10, tu0, tv0); uv.setXY(11, tu1, tv0);
+          uv.needsUpdate = true;
+          var side = new THREE.MeshStandardMaterial({roughness: 0.88});
+          side.color.setStyle('rgb(' + f[4] + ',' + f[5] + ',' + f[6] + ')');
+          var mesh = new THREE.Mesh(geo, [side, side, topMat, side, side, side]);
+          mesh.position.set((x0 + (x1 - x0) / 2) * u - WORLD_W / 2, SLAB_H + h / 2, (y0 + (y1 - y0) / 2) * u - planD / 2);
+          mesh.castShadow = true; mesh.receiveShadow = true;
+          model.add(mesh);
+        });
+      }
       self.group.add(model); self.model = model;
       // fit distance to plan size
       self.dist = Math.max(22, Math.min(40, 1.35 * Math.max(WORLD_W, planD * self.camera.aspect * 1.1)));
