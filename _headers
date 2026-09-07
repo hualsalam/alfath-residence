@@ -4,11 +4,17 @@
   X-Frame-Options: SAMEORIGIN
 
 # Hero videos are large and never change in place.
-# If you re-render, rename the file (hero-v2.mp4) or browsers hold the old one.
-/assets/hero.mp4
+# If you re-render, rename the file (hero-r4.mp4) or browsers hold the old one.
+/assets/hero-r3.mp4
   Cache-Control: public, max-age=31536000, immutable
-/assets/hero-m.mp4
+/assets/hero-r3-m.mp4
   Cache-Control: public, max-age=31536000, immutable
+
+# Script + brochure can change between deploys: revalidate hourly
+/assets/plan3d.js
+  Cache-Control: public, max-age=3600
+/assets/Al-Fath-Residence-Brochure.pdf
+  Cache-Control: public, max-age=3600
 
 /assets/*
   Cache-Control: public, max-age=2592000

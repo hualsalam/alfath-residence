@@ -95,9 +95,22 @@
     this.model.traverse(function(o){ if (o.geometry) o.geometry.dispose(); if (o.material){ if (o.material.map) o.material.map.dispose(); if (o.material.alphaMap) o.material.alphaMap.dispose(); o.material.dispose(); } });
     this.model = null;
   };
-  Viewer.prototype.load = function(base, cb){
+  // Composes the hi-res plan drawing onto the mask grid: meta.jb = content bbox in the JPG, meta.fb = footprint bbox in the mask.
+  function floorTexture(jpg, foot, meta){
+    var S = 2, W = foot.width, H = foot.height, c = document.createElement('canvas'); c.width = W * S; c.height = H * S;
+    var g = c.getContext('2d');
+    var sx = (meta.fb[2] - meta.fb[0]) / (meta.jb[2] - meta.jb[0]), sy = (meta.fb[3] - meta.fb[1]) / (meta.jb[3] - meta.jb[1]);
+    g.fillStyle = '#efe7da'; g.fillRect(0, 0, c.width, c.height);
+    g.drawImage(jpg, (meta.fb[0] - meta.jb[0] * sx) * S, (meta.fb[1] - meta.jb[1] * sy) * S, jpg.width * sx * S, jpg.height * sy * S);
+    var a = document.createElement('canvas'); a.width = c.width; a.height = c.height; var ag = a.getContext('2d'); ag.drawImage(foot, 0, 0, a.width, a.height);
+    var cd = g.getImageData(0, 0, c.width, c.height), ad = ag.getImageData(0, 0, a.width, a.height).data;
+    for (var i = 0; i < ad.length; i += 4) cd.data[i + 3] = ad[i];
+    g.putImageData(cd, 0, 0);
+    var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+  }
+  Viewer.prototype.load = function(base, meta, cb){
     var self = this, token = (this.token = (this.token || 0) + 1);
-    Promise.all([loadImg(base + '-walls.png'), loadImg(base + '-foot.png'), loadImg(base + '-tex.jpg')]).then(function(imgs){
+    Promise.all([loadImg(base + '-walls.png'), loadImg(base + '-foot.png'), loadImg(meta && meta.tex ? meta.tex : base + '-tex.jpg')]).then(function(imgs){
       if (token !== self.token) return; // superseded
       self.clear();
       var walls = maskGrid(imgs[0]), foot = maskGrid(imgs[1]);
@@ -115,18 +128,12 @@
       };
       model.add(addRects(rects(foot), SLAB_H, 0, slabMat, true));
       model.add(addRects(rects(walls), WALL_H, SLAB_H, wallMat, true));
-      // textured floor (plan drawing) clipped to the footprint
-      var tex = new THREE.Texture(imgs[2]); tex.needsUpdate = true; tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
-      var alpha = new THREE.Texture(imgs[1]); alpha.needsUpdate = true;
-      var floor = new THREE.Mesh(new THREE.PlaneGeometry(imgs[2].width / imgs[0].width * WORLD_W, imgs[2].height / imgs[0].width * WORLD_W),
-        new THREE.MeshStandardMaterial({map: tex, alphaMap: alpha, transparent: true, alphaTest: 0.5, roughness: 0.9}));
+      // textured floor (hi-res plan drawing registered onto the mask grid) clipped to the footprint
+      var tex = (meta && meta.jb) ? floorTexture(imgs[2], imgs[1], meta) : (function(){ var t = new THREE.Texture(imgs[2]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace; return t; })();
+      var floor = new THREE.Mesh(new THREE.PlaneGeometry(imgs[1].width * u, imgs[1].height * u),
+        new THREE.MeshStandardMaterial({map: tex, transparent: true, alphaTest: 0.5, roughness: 0.9}));
       floor.rotation.x = -Math.PI / 2; floor.position.y = SLAB_H + 0.012; floor.receiveShadow = true;
-      // the texture/alpha images share the same crop as the masks, so center them on the same origin
-      floor.position.x = (imgs[2].width / 2 * (WORLD_W / imgs[0].width)) - WORLD_W / 2 + (W * u - WORLD_W) / 2;
-      floor.position.z = (imgs[2].height / 2 * (WORLD_W / imgs[0].width)) - planD / 2 + (H * u - planD) / 2;
-      // correct for the mask grid flooring (mask is PX_PER_CELL-aligned, texture is not)
-      floor.position.x = floor.position.x - ((imgs[0].width - W * PX_PER_CELL) / 2) * (WORLD_W / imgs[0].width);
-      floor.position.z = floor.position.z - ((imgs[0].height - H * PX_PER_CELL) / 2) * (WORLD_W / imgs[0].width);
+      floor.position.x = (imgs[1].width * u - WORLD_W) / 2; floor.position.z = (imgs[1].height * u - planD) / 2;
       model.add(floor);
       self.group.add(model); self.model = model;
       // fit distance to plan size
