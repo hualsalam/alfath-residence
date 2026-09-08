@@ -1,0 +1,4 @@
+# Netlify build configuration, kept in the repo so it cannot drift from a dashboard setting.
+# The repository holds the whole project; only site/ is served to visitors.
+[build]
+  publish = "site"
