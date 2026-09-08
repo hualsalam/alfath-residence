@@ -1,0 +1,3 @@
+# /en is the English page, which lives at the site root.
+/en/*   /   301
+/en     /   301
