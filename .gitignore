@@ -1,0 +1,10 @@
+# Source media and old delivery archives: large, and kept locally rather than versioned.
+*.zip
+*.tmp
+/hero.mp4
+/hero-m.mp4
+/Al Fath - LIVE deploy/
+/Al Fath Residence.dc.html
+
+# Editor / tooling config
+.claude/

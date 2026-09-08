@@ -1,0 +1,382 @@
+# Arabic translation table for the Al Fath Residence landing page.
+# One replacement per line:  <English source text> TAB <Arabic replacement>
+# Applied top to bottom as literal (not regex) replacements, so longer / more
+# specific strings must come before shorter ones that they contain.
+# Lines starting with # and blank lines are ignored.
+# Rebuild the Arabic page after editing:  bash i18n/build-ar.sh
+#
+# ---------- head / meta ----------
+Al Fath Residence — Apartments in Madinah	الفتح ريزيدنس — شقق سكنية في المدينة المنورة
+Al Fath Residence — 32 residences in Madinah's Al Fath district, two minutes from Masjid Al Fath and minutes from the Prophet's Mosque. Explore floor plans in 3D and register your interest.	الفتح ريزيدنس — 32 وحدة سكنية في حي الفتح بالمدينة المنورة، على بعد دقيقتين من مسجد الفتح ودقائق من المسجد النبوي. استكشف المخططات بتقنية ثلاثية الأبعاد وسجّل اهتمامك.
+A Place Where Your Soul Calls Home. Minutes from the Prophet's Mosque.	مكانٌ تناديه روحك بيتاً. على بعد دقائق من المسجد النبوي.
+Residential apartments in the Al Fath district of Madinah, minutes from the Prophet's Mosque.	شقق سكنية في حي الفتح بالمدينة المنورة، على بعد دقائق من المسجد النبوي.
+<meta property="og:locale" content="en">	<meta property="og:locale" content="ar">
+#
+# ---------- nav ----------
+>Home</a>	>الرئيسية</a>
+>Floor&nbsp;Plans</a>	>المخططات</a>
+>Location</a>	>الموقع</a>
+>Contact&nbsp;Us</a>	>تواصل معنا</a>
+>Gallery</a>	>المعرض</a>
+<span>Brochure</span>	<span>الكتيّب</span>
+title="Download brochure (PDF)"	title="تحميل الكتيّب (PDF)"
+#
+# ---------- hero ----------
+<p class="hero__eyebrow">Al Fath, Madinah</p>	<p class="hero__eyebrow">حي الفتح، المدينة المنورة</p>
+<h1>Your home in Madinah.</h1>	<h1>بيتك في المدينة المنورة.</h1>
+<p class="hero__sub">A Place Where Your Soul Calls Home.</p>	<p class="hero__sub">مكانٌ تناديه روحك بيتاً.</p>
+>Register Your Interest</a>	>سجّل اهتمامك</a>
+Download Brochure</a>	تحميل الكتيّب</a>
+<span class="hero__scroll">Scroll</span>	<span class="hero__scroll">مرّر للأسفل</span>
+aria-label="Unmute video"	aria-label="تشغيل الصوت"
+title="Unmute"	title="تشغيل الصوت"
+'Unmute video':'Mute video'	'تشغيل الصوت':'كتم الصوت'
+#
+# ---------- about ----------
+<div class="eyebrow">About the Residence</div>	<div class="eyebrow">عن المشروع</div>
+A modern home, close enough to walk to every prayer.	بيتٌ عصري، قريبٌ بما يكفي للمشي إلى كل صلاة.
+Al Fath Residence was built for the rhythm of life in Madinah. Set in the Al Fath district, it places you a short walk from Masjid Al Fath and minutes from the Prophet&rsquo;s Mosque, so the day can move gently between rest and worship.	بُني الفتح ريزيدنس على إيقاع الحياة في المدينة المنورة. يقع في حي الفتح على بُعد خطوات من مسجد الفتح ودقائق من المسجد النبوي، ليمضي يومك بهدوء بين الراحة والعبادة.
+It is made for families and returning pilgrims who want a home of their own in the city &mdash; more space and privacy than a hotel room, in a building designed to be lived in for years, not nights.	صُمّم للعائلات ولزوّار المدينة العائدين ممن يريدون بيتاً خاصاً بهم — مساحة وخصوصية أكبر من غرفة فندقية، في مبنى مُعدّ للسكن سنوات لا ليالٍ.
+&ldquo;Where every day begins close to what matters.&rdquo;	&rdquo;حيث يبدأ كل يوم قريباً مما يهم.&ldquo;
+<b>20 min</b><span>Walk to the Haram</span><small>5 min drive</small>	<b>20 دقيقة</b><span>مشياً إلى الحرم</span><small>5 دقائق بالسيارة</small>
+<b>2 min</b><span>To Masjid Al Fath</span>	<b>دقيقتان</b><span>إلى مسجد الفتح</span>
+<b>6 min</b><span>To Masjid Al-Qiblatayn</span>	<b>6 دقائق</b><span>إلى مسجد القبلتين</span>
+<b>3 min</b><span>To Dr Soliman Fakeeh Hospital</span>	<b>3 دقائق</b><span>إلى مستشفى د. سليمان فقيه</span>
+#
+# ---------- floor plans ----------
+<div class="eyebrow">Floor Plans</div>	<div class="eyebrow">المخططات</div>
+Four ways to call it home.	أربع طرق لتسمّيه بيتك.
+Every residence has two bedrooms, a salon and a family living room. Choose a type below to explore it as a 3D model &mdash; drag to turn it, scroll to zoom.	كل وحدة تضم غرفتي نوم وصالة استقبال ومجلساً عائلياً. اختر النوع أدناه لاستكشافه بنموذج ثلاثي الأبعاد — اسحب لتدويره، ومرّر للتكبير.
+Drag to rotate</span>	اسحب للتدوير</span>
+Scroll or pinch to zoom</span>	مرّر أو اقرص للتكبير</span>
+Switch to the flat plan any time</span>	بدّل إلى المخطط المسطّح في أي وقت</span>
+>Building model&hellip;</div>	>جارٍ بناء النموذج…</div>
+<button id="btn3d" class="on" type="button">3D</button><button id="btn2d" type="button">Plan</button>	<button id="btn3d" class="on" type="button">ثلاثي الأبعاد</button><button id="btn2d" type="button">مخطط</button>
+<b>Drag to explore</b><em>Turn the apartment &middot; scroll to zoom</em>	<b>اسحب للاستكشاف</b><em>أدر الشقة · مرّر للتكبير</em>
+</svg>Drag to rotate &middot; scroll to zoom</div>	</svg>اسحب للتدوير · مرّر للتكبير</div>
+<div class="eyebrow">Apartment</div>	<div class="eyebrow">الشقة</div>
+>Type A</h3>	>النوع A</h3>
+>133 sqm</div>	>133 م²</div>
+>View full plan</button>	>عرض المخطط كاملاً</button>
+>Enquire about this type</button>	>استفسر عن هذا النوع</button>
+alt="Typical floor plan"	alt="مخطط الدور المتكرر"
+<div class="mcard__t">Typical floor</div><div class="mcard__s">Four residences per floor, arranged around a central core.</div>	<div class="mcard__t">الدور المتكرر</div><div class="mcard__s">أربع وحدات في كل دور حول نواة مركزية.</div>
+alt="Basement parking plan"	alt="مخطط مواقف القبو"
+<div class="mcard__t">Basement parking</div><div class="mcard__s">Private, secure parking beneath the residence.</div>	<div class="mcard__t">مواقف القبو</div><div class="mcard__s">مواقف خاصة وآمنة أسفل المبنى.</div>
+<b>32</b><span>Residences</span>	<b>32</b><span>وحدة سكنية</span>
+<b>4</b><span>Apartments per floor</span>	<b>4</b><span>شقق في كل دور</span>
+<b>2 bed</b><span>Every residence</span>	<b>غرفتا نوم</b><span>في كل وحدة</span>
+#
+# ---------- location ----------
+<div class="eyebrow" style="color:#DCE8F2">Al Fath, Madinah</div>	<div class="eyebrow" style="color:#DCE8F2">حي الفتح، المدينة المنورة</div>
+Minutes from where it all began.	على بعد دقائق من حيث بدأ كل شيء.
+The Prophet&rsquo;s Mosque, Quba, Al-Qiblatayn, Uhud &mdash; every holy site in Madinah within a short drive. Select a place to see it on the map.	المسجد النبوي، وقباء، والقبلتين، وأُحد — كل المعالم المقدسة في المدينة على مسافة قصيرة. اختر موقعاً لعرضه على الخريطة.
+aria-label="Map of Al Fath Residence and the holy sites of Madinah"	aria-label="خريطة الفتح ريزيدنس والمعالم المقدسة في المدينة المنورة"
+#
+# map site names: swap so Arabic is primary and English becomes the subtitle
+{n:'The Prophet’s Mosque', ar:'المسجد النبوي'	{n:'المسجد النبوي', ar:'The Prophet’s Mosque'
+{n:'Masjid Al Fath (Seven Mosques)', ar:'مسجد الفتح'	{n:'مسجد الفتح (المساجد السبعة)', ar:'Masjid Al Fath'
+{n:'Masjid al-Qiblatayn', ar:'مسجد القبلتين'	{n:'مسجد القبلتين', ar:'Masjid al-Qiblatayn'
+{n:'Masjid Quba', ar:'مسجد قباء'	{n:'مسجد قباء', ar:'Masjid Quba'
+{n:'Mount Uhud & Martyrs of Uhud', ar:'جبل أحد'	{n:'جبل أُحد وشهداء أُحد', ar:'Mount Uhud'
+{n:'Al-Baqi Cemetery', ar:'بقيع الغرقد'	{n:'بقيع الغرقد', ar:'Al-Baqi Cemetery'
+{n:'Masjid Al-Ghamamah', ar:'مسجد الغمامة'	{n:'مسجد الغمامة', ar:'Masjid Al-Ghamamah'
+{n:'Masjid Al-Ijabah', ar:'مسجد الإجابة'	{n:'مسجد الإجابة', ar:'Masjid Al-Ijabah'
+{n:'Masjid Al-Jumu’ah', ar:'مسجد الجمعة'	{n:'مسجد الجمعة', ar:'Masjid Al-Jumu’ah'
+{n:'Miqat Dhul Hulayfah', ar:'مسجد الميقات'	{n:'مسجد الميقات (ذو الحليفة)', ar:'Miqat Dhul Hulayfah'
+{n:'Dr Soliman Fakeeh Hospital', ar:'مستشفى د. سليمان فقيه'	{n:'مستشفى د. سليمان فقيه', ar:'Dr Soliman Fakeeh Hospital'
+<b>Al Fath Residence</b>Al Fath District, Madinah	<b>الفتح ريزيدنس</b>حي الفتح، المدينة المنورة
+' km &middot; ~'+s.min+' min drive'	' كم · ~'+s.min+(s.min===2?' دقيقتان':s.min<=10?' دقائق':' دقيقة')+' بالسيارة'
+<b>Al Fath Residence</b><small>Al Fath District &middot; Madinah</small></span><em>Home</em>	<b>الفتح ريزيدنس</b><small>حي الفتح · المدينة المنورة</small></span><em>المشروع</em>
+' km</small></span><em>~'+s.min+' min</em>	' كم</small></span><em>~'+s.min+(s.min===2?' دقيقتان':s.min<=10?' دقائق':' دقيقة')+'</em>
+#
+# ---------- gallery ----------
+<div class="eyebrow" style="margin-bottom:16px">Gallery</div>	<div class="eyebrow" style="margin-bottom:16px">المعرض</div>
+<h2 class="h2">A closer look.</h2>	<h2 class="h2">نظرة أقرب.</h2>
+'The Residence'	'المبنى'
+'Living Room'	'المجلس العائلي'
+'Bedroom'	'غرفة النوم'
+'Street View'	'من الشارع'
+'Bathroom'	'دورة المياه'
+'Entrance'	'المدخل'
+'Corner Elevation'	'الواجهة الجانبية'
+'Ground-floor Retail'	'محلات الدور الأرضي'
+'Aerial View'	'منظر جوي'
+'Basement Parking'	'مواقف القبو'
+'Madinah Skyline'	'أفق المدينة المنورة'
+'The Green Dome'	'القبة الخضراء'
+'Prophet’s Mosque Courtyard'	'ساحات المسجد النبوي'
+'Madinah at Night'	'المدينة ليلاً'
+'Dawn in Madinah'	'فجر المدينة'
+#
+# ---------- contact us ----------
+>Contact Us</div>	>تواصل معنا</div>
+Own your unit today.	امتلك وحدتك اليوم.
+Leave your details below and our sales team will be in touch with pricing and availability &mdash; no need to leave the page.	اترك بياناتك أدناه وسيتواصل معك فريق المبيعات بالأسعار والوحدات المتاحة — دون مغادرة الصفحة.
+>Send message</button>	>إرسال الرسالة</button>
+'Send message'	'إرسال الرسالة'
+Your message has been sent. Our team will be in touch shortly.	تم إرسال رسالتك. سيتواصل معك فريقنا قريباً.
+Prefer to read first? <a href="assets/Al-Fath-Residence-Brochure.pdf" download>Download the brochure (PDF)</a>	تفضّل الاطلاع أولاً؟ <a href="assets/Al-Fath-Residence-Brochure.pdf" download>حمّل الكتيّب (PDF)</a>
+#
+# ---------- form fields (shared by both forms) ----------
+First name <i>*</i>	الاسم الأول <i>*</i>
+Last name <i>*</i>	اسم العائلة <i>*</i>
+Email <i>*</i>	البريد الإلكتروني <i>*</i>
+Phone <i>*</i>	رقم الجوال <i>*</i>
+Nationality <i>*</i>	الجنسية <i>*</i>
+Country of residence <i>*</i>	بلد الإقامة <i>*</i>
+Religion <i>*</i>	الديانة <i>*</i>
+placeholder="First name"	placeholder="الاسم الأول"
+placeholder="Last name"	placeholder="اسم العائلة"
+aria-label="Country dialling code"	aria-label="مفتاح الدولة"
+<option value="" selected disabled>Select…</option><option>Muslim</option><option>Christian</option><option>Other</option>	<option value="" selected disabled>اختر…</option><option>مسلم</option><option>مسيحي</option><option>أخرى</option>
+'<option value="" selected disabled>Select…</option>'	'<option value="" selected disabled>اختر…</option>'
+#
+# ---------- enquiry modal ----------
+<div class="eyebrow">Register Interest</div>	<div class="eyebrow">سجّل اهتمامك</div>
+Enquire about <span id="enqType">this residence</span>	استفسر عن <span id="enqType">هذا المشروع</span>
+Leave your details and our sales team will contact you with pricing and availability.	اترك بياناتك وسيتواصل معك فريق المبيعات بالأسعار والوحدات المتاحة.
+>Submit enquiry</button>	>إرسال الاستفسار</button>
+'Submit enquiry'	'إرسال الاستفسار'
+We use your details only to answer this enquiry.	نستخدم بياناتك للرد على هذا الاستفسار فقط.
+<h4>Thank you.</h4>	<h4>شكراً لك.</h4>
+Your enquiry has been sent. Our team will be in touch shortly.	تم إرسال استفسارك. سيتواصل معك فريقنا قريباً.
+Reference <b id="enqRef">AF-000000</b>	الرقم المرجعي <b id="enqRef">AF-000000</b>
+id="enqAgain" type="button" style="margin-top:18px">Close</button>	id="enqAgain" type="button" style="margin-top:18px">إغلاق</button>
+aria-label="Close"	aria-label="إغلاق"
+'this residence'	'هذا المشروع'
+#
+# ---------- footer ----------
+A Place Where Your Soul Calls Home &mdash; minutes from the Prophet&rsquo;s Mosque.	مكانٌ تناديه روحك بيتاً — على بعد دقائق من المسجد النبوي.
+<h5>Explore</h5>	<h5>استكشف</h5>
+<a href="#plans">Floor Plans</a>	<a href="#plans">المخططات</a>
+download>Brochure (PDF)</a>	download>الكتيّب (PDF)</a>
+<h5>Contact</h5>	<h5>تواصل</h5>
+<span>Al Fath District, Madinah,<br>Kingdom of Saudi Arabia</span>	<span>حي الفتح، المدينة المنورة،<br>المملكة العربية السعودية</span>
+<h5>Legal</h5>	<h5>قانوني</h5>
+>Privacy Policy</a>	>سياسة الخصوصية</a>
+>Terms</a>	>الشروط والأحكام</a>
+&copy; 2026 Al Fath Residence. All rights reserved.	&copy; 2026 الفتح ريزيدنس. جميع الحقوق محفوظة.
+<span>Madinah &middot; Saudi Arabia</span>	<span>المدينة المنورة · المملكة العربية السعودية</span>
+#
+# ---------- javascript strings ----------
+name:'Type A'	name:'النوع A'
+name:'Type B'	name:'النوع B'
+name:'Type C'	name:'النوع C'
+name:'Type D'	name:'النوع D'
+'Salon, family living room, kitchen, two bedrooms (one en-suite), guest bathroom and laundry.'	'صالة استقبال، مجلس عائلي، مطبخ، غرفتا نوم (إحداهما بدورة مياه خاصة)، دورة مياه للضيوف، وغرفة غسيل.'
+'Salon and living room side by side, an open kitchen, two bedrooms with their own bathrooms, guest WC and laundry.'	'صالة استقبال ومجلس متجاوران، مطبخ مفتوح، غرفتا نوم بدورتي مياه خاصتين، دورة مياه للضيوف، وغرفة غسيل.'
+'A compact two-bedroom home with salon, living room, kitchen, two bathrooms and laundry.'	'وحدة عملية بغرفتي نوم مع صالة استقبال ومجلس ومطبخ ودورتي مياه وغرفة غسيل.'
+'Salon, living room, kitchen, two bedrooms, three bathrooms and a dedicated laundry room.'	'صالة استقبال، مجلس، مطبخ، غرفتا نوم، ثلاث دورات مياه، وغرفة غسيل مستقلة.'
++p.area+' sqm</span>	+p.area+' م²</span>
+p.area + ' sqm'	p.area + ' م²'
++p.area+' sqm</li>	+p.area+' م²</li>
++p.beds+' bedrooms</li>	+(p.beds===2?'غرفتا نوم':p.beds+' غرف نوم')+'</li>
++p.baths+' bathrooms</li>	+(p.baths===2?'دورتا مياه':p.baths+' دورات مياه')+'</li>
+'Salon + living</li>'	'صالة + مجلس</li>'
+'Laundry</li>'	'غسيل</li>'
+' floor plan"	' مخطط الوحدة"
+'3D unavailable — showing plan'	'تعذّر عرض النموذج — يظهر المخطط'
+'General enquiry'	'استفسار عام'
+'Please complete every field marked with an asterisk.'	'يرجى تعبئة جميع الحقول المعلّمة بنجمة.'
+'Please enter a valid email address.'	'يرجى إدخال بريد إلكتروني صحيح.'
+'Sending…'	'جارٍ الإرسال…'
+'Sorry — we could not send that ('	'تعذّر الإرسال ('
+'). Please email info@alfathresidence.com instead.'	'). يرجى مراسلتنا على info@alfathresidence.com'
+'Your details were captured, but delivery is not configured yet — no email was sent. Add a Web3Forms access key to enable it.'	'تم استلام بياناتك، لكن الإرسال غير مُفعّل بعد — لم يُرسل أي بريد.'
+subject: 'Al Fath Residence — new enquiry'	subject: 'الفتح ريزيدنس — استفسار جديد (عربي)'
+#
+# ---------- country list ----------
+# Each entry is "Name|diallingCode," inside the COUNTRIES string; the dial code makes
+# every line unique. Sorted alphabetically in Arabic at runtime (see rules below).
+COUNTRIES.map(function(c){ return '<option>' + c.n + '</option>'; }).join('')	COUNTRIES.slice().sort(function(a,b){ return a.n.localeCompare(b.n,'ar'); }).map(function(c){ return '<option>' + c.n + '</option>'; }).join('')
+(c.n === 'Saudi Arabia' ? ' selected' : '')	(c.n === 'السعودية' ? ' selected' : '')
+Afghanistan|93,	أفغانستان|93,
+Albania|355,	ألبانيا|355,
+Algeria|213,	الجزائر|213,
+Andorra|376,	أندورا|376,
+Angola|244,	أنغولا|244,
+Antigua and Barbuda|1,	أنتيغوا وبربودا|1,
+Argentina|54,	الأرجنتين|54,
+Armenia|374,	أرمينيا|374,
+Australia|61,	أستراليا|61,
+Austria|43,	النمسا|43,
+Azerbaijan|994,	أذربيجان|994,
+Bahamas|1,	الباهاما|1,
+Bahrain|973,	البحرين|973,
+Bangladesh|880,	بنغلاديش|880,
+Barbados|1,	بربادوس|1,
+Belarus|375,	بيلاروسيا|375,
+Belgium|32,	بلجيكا|32,
+Belize|501,	بليز|501,
+Benin|229,	بنين|229,
+Bhutan|975,	بوتان|975,
+Bolivia|591,	بوليفيا|591,
+Bosnia and Herzegovina|387,	البوسنة والهرسك|387,
+Botswana|267,	بوتسوانا|267,
+Brazil|55,	البرازيل|55,
+Brunei|673,	بروناي|673,
+Bulgaria|359,	بلغاريا|359,
+Burkina Faso|226,	بوركينا فاسو|226,
+Burundi|257,	بوروندي|257,
+Cambodia|855,	كمبوديا|855,
+Cameroon|237,	الكاميرون|237,
+Canada|1,	كندا|1,
+Cape Verde|238,	الرأس الأخضر|238,
+Central African Republic|236,	جمهورية أفريقيا الوسطى|236,
+Chad|235,	تشاد|235,
+Chile|56,	تشيلي|56,
+China|86,	الصين|86,
+Colombia|57,	كولومبيا|57,
+Comoros|269,	جزر القمر|269,
+Congo|242,	الكونغو|242,
+Congo (DRC)|243,	الكونغو الديمقراطية|243,
+Costa Rica|506,	كوستاريكا|506,
+Croatia|385,	كرواتيا|385,
+Cuba|53,	كوبا|53,
+Cyprus|357,	قبرص|357,
+Czechia|420,	التشيك|420,
+Denmark|45,	الدنمارك|45,
+Djibouti|253,	جيبوتي|253,
+Dominica|1,	دومينيكا|1,
+Dominican Republic|1,	جمهورية الدومينيكان|1,
+Ecuador|593,	الإكوادور|593,
+Egypt|20,	مصر|20,
+El Salvador|503,	السلفادور|503,
+Equatorial Guinea|240,	غينيا الاستوائية|240,
+Eritrea|291,	إريتريا|291,
+Estonia|372,	إستونيا|372,
+Eswatini|268,	إسواتيني|268,
+Ethiopia|251,	إثيوبيا|251,
+Fiji|679,	فيجي|679,
+Finland|358,	فنلندا|358,
+France|33,	فرنسا|33,
+Gabon|241,	الغابون|241,
+Gambia|220,	غامبيا|220,
+Georgia|995,	جورجيا|995,
+Germany|49,	ألمانيا|49,
+Ghana|233,	غانا|233,
+Greece|30,	اليونان|30,
+Grenada|1,	غرينادا|1,
+Guatemala|502,	غواتيمالا|502,
+Guinea|224,	غينيا|224,
+Guinea-Bissau|245,	غينيا بيساو|245,
+Guyana|592,	غيانا|592,
+Haiti|509,	هايتي|509,
+Honduras|504,	هندوراس|504,
+Hong Kong|852,	هونغ كونغ|852,
+Hungary|36,	المجر|36,
+Iceland|354,	آيسلندا|354,
+India|91,	الهند|91,
+Indonesia|62,	إندونيسيا|62,
+Iran|98,	إيران|98,
+Iraq|964,	العراق|964,
+Ireland|353,	أيرلندا|353,
+Italy|39,	إيطاليا|39,
+Ivory Coast|225,	ساحل العاج|225,
+Jamaica|1,	جامايكا|1,
+Japan|81,	اليابان|81,
+Jordan|962,	الأردن|962,
+Kazakhstan|7,	كازاخستان|7,
+Kenya|254,	كينيا|254,
+Kiribati|686,	كيريباتي|686,
+Kosovo|383,	كوسوفو|383,
+Kuwait|965,	الكويت|965,
+Kyrgyzstan|996,	قيرغيزستان|996,
+Laos|856,	لاوس|856,
+Latvia|371,	لاتفيا|371,
+Lebanon|961,	لبنان|961,
+Lesotho|266,	ليسوتو|266,
+Liberia|231,	ليبيريا|231,
+Libya|218,	ليبيا|218,
+Liechtenstein|423,	ليختنشتاين|423,
+Lithuania|370,	ليتوانيا|370,
+Luxembourg|352,	لوكسمبورغ|352,
+Macau|853,	ماكاو|853,
+Madagascar|261,	مدغشقر|261,
+Malawi|265,	مالاوي|265,
+Malaysia|60,	ماليزيا|60,
+Maldives|960,	المالديف|960,
+Mali|223,	مالي|223,
+Malta|356,	مالطا|356,
+Mauritania|222,	موريتانيا|222,
+Mauritius|230,	موريشيوس|230,
+Mexico|52,	المكسيك|52,
+Moldova|373,	مولدوفا|373,
+Monaco|377,	موناكو|377,
+Mongolia|976,	منغوليا|976,
+Montenegro|382,	الجبل الأسود|382,
+Morocco|212,	المغرب|212,
+Mozambique|258,	موزمبيق|258,
+Myanmar|95,	ميانمار|95,
+Namibia|264,	ناميبيا|264,
+Nepal|977,	نيبال|977,
+Netherlands|31,	هولندا|31,
+New Zealand|64,	نيوزيلندا|64,
+Nicaragua|505,	نيكاراغوا|505,
+Niger|227,	النيجر|227,
+Nigeria|234,	نيجيريا|234,
+North Macedonia|389,	مقدونيا الشمالية|389,
+Norway|47,	النرويج|47,
+Oman|968,	عُمان|968,
+Pakistan|92,	باكستان|92,
+Palestine|970,	فلسطين|970,
+Panama|507,	بنما|507,
+Papua New Guinea|675,	بابوا غينيا الجديدة|675,
+Paraguay|595,	باراغواي|595,
+Peru|51,	بيرو|51,
+Philippines|63,	الفلبين|63,
+Poland|48,	بولندا|48,
+Portugal|351,	البرتغال|351,
+Qatar|974,	قطر|974,
+Romania|40,	رومانيا|40,
+Russia|7,	روسيا|7,
+Rwanda|250,	رواندا|250,
+Saint Lucia|1,	سانت لوسيا|1,
+Samoa|685,	ساموا|685,
+San Marino|378,	سان مارينو|378,
+Saudi Arabia|966,	السعودية|966,
+Senegal|221,	السنغال|221,
+Serbia|381,	صربيا|381,
+Seychelles|248,	سيشل|248,
+Sierra Leone|232,	سيراليون|232,
+Singapore|65,	سنغافورة|65,
+Slovakia|421,	سلوفاكيا|421,
+Slovenia|386,	سلوفينيا|386,
+Solomon Islands|677,	جزر سليمان|677,
+Somalia|252,	الصومال|252,
+South Africa|27,	جنوب أفريقيا|27,
+South Korea|82,	كوريا الجنوبية|82,
+South Sudan|211,	جنوب السودان|211,
+Spain|34,	إسبانيا|34,
+Sri Lanka|94,	سريلانكا|94,
+Sudan|249,	السودان|249,
+Suriname|597,	سورينام|597,
+Sweden|46,	السويد|46,
+Switzerland|41,	سويسرا|41,
+Syria|963,	سوريا|963,
+Taiwan|886,	تايوان|886,
+Tajikistan|992,	طاجيكستان|992,
+Tanzania|255,	تنزانيا|255,
+Thailand|66,	تايلاند|66,
+Timor-Leste|670,	تيمور الشرقية|670,
+Togo|228,	توغو|228,
+Tonga|676,	تونغا|676,
+Trinidad and Tobago|1,	ترينيداد وتوباغو|1,
+Tunisia|216,	تونس|216,
+Turkey|90,	تركيا|90,
+Turkmenistan|993,	تركمانستان|993,
+Uganda|256,	أوغندا|256,
+Ukraine|380,	أوكرانيا|380,
+United Arab Emirates|971,	الإمارات|971,
+United Kingdom|44,	المملكة المتحدة|44,
+United States|1,	الولايات المتحدة|1,
+Uruguay|598,	أوروغواي|598,
+Uzbekistan|998,	أوزبكستان|998,
+Vanuatu|678,	فانواتو|678,
+Vatican City|39,	الفاتيكان|39,
+Venezuela|58,	فنزويلا|58,
+Vietnam|84,	فيتنام|84,
+Yemen|967,	اليمن|967,
+Zambia|260,	زامبيا|260,
+Zimbabwe|263'	زيمبابوي|263'

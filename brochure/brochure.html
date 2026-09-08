@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Al Fath Residence — Brochure</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page{size:297mm 210mm;margin:0}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#F5EFE6;color:#2B2521;font-family:'Jost','Segoe UI',system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:297mm;height:210mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}
+  .page:last-child{page-break-after:auto}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
+  .eyebrow{font-size:9pt;letter-spacing:.3em;text-transform:uppercase;color:#457B9D;font-weight:500}
+  .navy{background:#1D3557;color:#FBF3E4}
+  .navy .eyebrow{color:#DCE8F2}
+  img{display:block}
+  .cover img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .cover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,26,44,.15),rgba(16,26,44,.05) 40%,rgba(16,26,44,.82))}
+  .cover .lockup{position:absolute;top:14mm;right:16mm;width:44mm}
+  .cover .text{position:absolute;left:18mm;bottom:18mm;color:#FBF7F0}
+  .cover h1{font-size:44pt;line-height:1;margin:0 0 6mm;font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:-.01em}
+  .cover p{font-size:13pt;font-weight:300;margin:0;letter-spacing:.04em}
+  .cover .tag{position:absolute;right:18mm;bottom:18mm;color:rgba(251,247,240,.85);font-size:9pt;letter-spacing:.3em;text-transform:uppercase;text-align:right}
+  .pad{padding:16mm 18mm}
+  .two{display:grid;grid-template-columns:1.05fr .95fr;gap:12mm;height:100%;align-items:center}
+  h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:28pt;line-height:1.05;margin:3mm 0 6mm}
+  p.lead{font-size:10.5pt;line-height:1.75;font-weight:300;color:#5A5046;margin:0 0 4mm}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin-top:8mm}
+  .stat{border-top:1px solid rgba(43,37,33,.15);padding-top:3mm}
+  .stat b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;font-weight:500;color:#7B4B2A;line-height:1}
+  .stat span{display:block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:#8A7C6C;margin-top:2mm}
+  .frame{padding:3mm;border:1px solid rgba(69,124,157,.55);border-radius:2mm}
+  .frame img{width:100%;height:150mm;object-fit:cover;border-radius:1mm}
+  .plans{display:grid;grid-template-columns:1fr 1fr;gap:6mm 8mm;height:100%}
+  .plan{background:#fff;border-radius:2mm;padding:5mm;display:grid;grid-template-columns:1fr 34mm;gap:4mm;align-items:center}
+  .plan img{width:100%;height:60mm;object-fit:contain}
+  .plan h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:20pt;margin:0;line-height:1}
+  .plan .area{font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:#8A7C6C;margin:2mm 0 4mm}
+  .plan ul{list-style:none;margin:0;padding:0;font-size:8.5pt;line-height:1.9;color:#3A332C}
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:4mm;height:100%}
+  .gal figure{margin:0;position:relative;overflow:hidden;border-radius:1.5mm}
+  .gal img{width:100%;height:100%;object-fit:cover}
+  .gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:8mm 4mm 3mm;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:linear-gradient(180deg,transparent,rgba(20,16,12,.6))}
+  .map{display:grid;grid-template-columns:1.5fr .8fr;gap:8mm;height:100%;align-items:center}
+  .map img{width:100%;border-radius:2mm;border:1px solid rgba(220,232,242,.3)}
+  .sites{list-style:none;margin:0;padding:0}
+  .sites li{display:flex;justify-content:space-between;gap:4mm;padding:2.6mm 0;border-bottom:1px solid rgba(220,232,242,.16);font-size:9.5pt}
+  .sites li span{color:rgba(251,243,228,.6);font-size:8pt;letter-spacing:.1em;white-space:nowrap}
+  .contact{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%}
+  .contact img{width:60mm;margin-bottom:6mm}
+  .contact h2{font-size:34pt;margin-bottom:4mm}
+  .contact p{margin:0;font-size:11pt;font-weight:300;line-height:1.9}
+  .contact .cta{margin-top:8mm;display:inline-block;padding:4mm 10mm;border-radius:99px;background:#C88A5A;color:#fff;font-weight:600;font-size:10pt;letter-spacing:.06em}
+  .foot{position:absolute;left:18mm;right:18mm;bottom:8mm;display:flex;justify-content:space-between;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:#8A7C6C}
+  .navy .foot{color:rgba(251,243,228,.5)}
+</style>
+</head>
+<body>
+
+<!-- 1 · cover -->
+<section class="page cover">
+  <img class="bg" src="../site/assets/ext-front.jpg" alt="">
+  <div class="shade"></div>
+  <img class="lockup" src="../site/assets/logo/lockup-cream.png" alt="Al Fath Residence">
+  <div class="text">
+    <h1>Your home in Madinah.</h1>
+    <p>A Place Where Your Soul Calls Home &mdash; minutes from the Prophet&rsquo;s Mosque.</p>
+  </div>
+  <div class="tag">Al Fath District &middot; Madinah<br>Residence Brochure 2026</div>
+</section>
+
+<!-- 2 · about -->
+<section class="page pad">
+  <div class="two">
+    <div>
+      <div class="eyebrow">About the Residence</div>
+      <h2>A modern home, close enough to walk to every prayer.</h2>
+      <p class="lead">Al Fath Residence was built for the rhythm of life in Madinah. Set in the Al Fath district, it places you a short walk from Masjid Al Fath and minutes from the Prophet&rsquo;s Mosque, so the day can move gently between rest and worship.</p>
+      <p class="lead">It is made for families and returning pilgrims who want a home of their own in the city &mdash; more space and privacy than a hotel room, in a building designed to be lived in for years, not nights.</p>
+      <div class="stats">
+        <div class="stat"><b>32</b><span>Residences</span></div>
+        <div class="stat"><b>4</b><span>Per floor</span></div>
+        <div class="stat"><b>2 bed</b><span>Every home</span></div>
+        <div class="stat"><b>Basement</b><span>Private parking</span></div>
+      </div>
+    </div>
+    <div class="frame"><img src="../site/assets/ext-street.jpg" alt=""></div>
+  </div>
+  <div class="foot"><span>Al Fath Residence</span><span>02</span></div>
+</section>
+
+<!-- 3 · floor plans -->
+<section class="page pad" style="background:#EFE7DA">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6mm"><div><div class="eyebrow">Floor Plans</div><h2 style="margin-bottom:0">Four ways to call it home.</h2></div><div style="font-size:9pt;color:#6B6157;font-weight:300;max-width:80mm;text-align:right">Every residence has two bedrooms, a salon and a family living room. Explore each type as an interactive 3D model at alfathresidence.com</div></div>
+  <div class="plans" style="height:138mm">
+    <div class="plan"><img src="../site/assets/plans/a.jpg" alt=""><div><h3>Type A</h3><div class="area">133 sqm</div><ul><li>2 bedrooms</li><li>3 bathrooms</li><li>Salon + living room</li><li>Kitchen &middot; laundry</li></ul></div></div>
+    <div class="plan"><img src="../site/assets/plans/b.jpg" alt=""><div><h3>Type B</h3><div class="area">138 sqm</div><ul><li>2 bedrooms</li><li>3 bathrooms</li><li>Salon + living room</li><li>Kitchen &middot; laundry</li></ul></div></div>
+    <div class="plan"><img src="../site/assets/plans/c.jpg" alt=""><div><h3>Type C</h3><div class="area">112 sqm</div><ul><li>2 bedrooms</li><li>2 bathrooms</li><li>Salon + living room</li><li>Kitchen &middot; laundry</li></ul></div></div>
+    <div class="plan"><img src="../site/assets/plans/d.jpg" alt=""><div><h3>Type D</h3><div class="area">118 sqm</div><ul><li>2 bedrooms</li><li>3 bathrooms</li><li>Salon + living room</li><li>Kitchen &middot; laundry</li></ul></div></div>
+  </div>
+  <div class="foot"><span>Al Fath Residence</span><span>03</span></div>
+</section>
+
+<!-- 4 · typical floor + basement -->
+<section class="page pad">
+  <div class="eyebrow">The Building</div>
+  <h2>Four residences per floor, parking below.</h2>
+  <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:8mm;height:130mm">
+    <div style="background:#fff;border-radius:2mm;padding:6mm;display:flex;flex-direction:column"><img src="../site/assets/plans/floor.jpg" alt="" style="width:100%;flex:1;object-fit:contain;min-height:0"><div style="font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:#8A7C6C;margin-top:4mm">Typical floor plan</div></div>
+    <div style="background:#fff;border-radius:2mm;padding:6mm;display:flex;flex-direction:column"><img src="../site/assets/plans/basement.jpg" alt="" style="width:100%;flex:1;object-fit:contain;min-height:0"><div style="font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:#8A7C6C;margin-top:4mm">Basement parking</div></div>
+  </div>
+  <div class="foot"><span>Al Fath Residence</span><span>04</span></div>
+</section>
+
+<!-- 5 · gallery -->
+<section class="page pad" style="background:#EFE7DA">
+  <div class="gal" style="height:178mm">
+    <figure><img src="../site/assets/int-2.jpg" alt=""><figcaption>Living room</figcaption></figure>
+    <figure><img src="../site/assets/int-3.jpg" alt=""><figcaption>Bedroom</figcaption></figure>
+    <figure><img src="../site/assets/int-4.jpg" alt=""><figcaption>Bathroom</figcaption></figure>
+    <figure><img src="../site/assets/int-1.jpg" alt=""><figcaption>Entrance</figcaption></figure>
+    <figure><img src="../site/assets/ext-shop.jpg" alt=""><figcaption>Ground-floor retail</figcaption></figure>
+    <figure><img src="../site/assets/ext-corner.jpg" alt=""><figcaption>Corner elevation</figcaption></figure>
+  </div>
+</section>
+
+<!-- 6 · location -->
+<section class="page pad navy">
+  <div class="map">
+    <img src="../site/assets/map-video.jpg" alt="">
+    <div>
+      <div class="eyebrow">Location</div>
+      <h2 style="color:#FBF3E4">Minutes from where it all began.</h2>
+      <ul class="sites">
+        <li>The Prophet&rsquo;s Mosque<span>5 min drive</span></li>
+        <li>Masjid Al Fath<span>2 min</span></li>
+        <li>Dr Soliman Fakeeh Hospital<span>3 min</span></li>
+        <li>Masjid al-Qiblatayn<span>6 min</span></li>
+        <li>Masjid Quba<span>~10 min</span></li>
+        <li>Mount Uhud<span>~10 min</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>Al Fath Residence</span><span>06</span></div>
+</section>
+
+<!-- 7 · contact -->
+<section class="page pad">
+  <div class="contact">
+    <img src="../site/assets/logo/lockup-blue.png" alt="Al Fath Residence">
+    <div class="eyebrow">Register Interest</div>
+    <h2>Own your unit today.</h2>
+    <p>info@alfathresidence.com<br>+966 551 134 1505<br>Al Fath District, Madinah, Kingdom of Saudi Arabia</p>
+    <span class="cta">alfathresidence.com</span>
+  </div>
+  <div class="foot"><span>&copy; 2026 Al Fath Residence</span><span>Madinah &middot; Saudi Arabia</span></div>
+</section>
+
+</body>
+</html>
