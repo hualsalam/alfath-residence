@@ -43,7 +43,7 @@
   a{color:#457B9D;text-decoration:none;transition:color .3s ease}
   a:hover{color:#2A4A73}
   ::selection{background:#1D3557;color:#fff}
-  @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(var(--shift,-50%))}}
   [data-reveal="pending"]{opacity:0;transform:translateY(30px)}
   [data-reveal="in"]{opacity:1;transform:none;transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1)}
   .wrap{max-width:1180px;margin:0 auto}
@@ -616,6 +616,25 @@ stageVis.observe(stage);
 // g-*.jpg are already 860x480 and have no thumb — they fall back to the full file.
 var SHOTS = [['../assets/ext-front.jpg','المبنى','../assets/thumbs/ext-front.jpg'],['../assets/int-2.jpg','المجلس العائلي','../assets/thumbs/int-2.jpg'],['../assets/int-3.jpg','غرفة النوم','../assets/thumbs/int-3.jpg'],['../assets/ext-street.jpg','من الشارع','../assets/thumbs/ext-street.jpg'],['../assets/int-4.jpg','دورة المياه','../assets/thumbs/int-4.jpg'],['../assets/int-1.jpg','المدخل','../assets/thumbs/int-1.jpg'],['../assets/ext-corner.jpg','الواجهة الجانبية','../assets/thumbs/ext-corner.jpg'],['../assets/ext-shop.jpg','محلات الدور الأرضي','../assets/thumbs/ext-shop.jpg'],['../assets/ext-aerial.jpg','منظر جوي','../assets/thumbs/ext-aerial.jpg'],['../assets/g-parking.jpg','مواقف القبو'],['../assets/g-skyline.jpg','أفق المدينة المنورة'],['../assets/g-dome.jpg','القبة الخضراء'],['../assets/g-courtyard.jpg','ساحات المسجد النبوي'],['../assets/g-minaret-night.jpg','المدينة ليلاً'],['../assets/g-dew.jpg','فجر المدينة']];
 document.getElementById('gallery-track').innerHTML = SHOTS.concat(SHOTS).map(function(s){return '<button data-zoom-src="'+s[0]+'" style="flex:0 0 auto;width:clamp(280px,30vw,380px);height:clamp(210px,24vw,280px);position:relative;overflow:hidden;border:none;padding:0;cursor:zoom-in;border-radius:3px;background:#EFE7DA"><img src="'+(s[2]||s[0])+'" alt="'+s[1]+'" loading="lazy" style="width:100%;height:100%;object-fit:cover"><span style="position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;text-align:right;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:linear-gradient(180deg,transparent,rgba(20,16,12,.6))">'+s[1]+'</span></button>';}).join('');
+
+// One animation cycle must advance the strip by exactly one copy of SHOTS, i.e.
+// SHOTS.length * (card width + gap). translateX(-50%) was 8px short of that: the
+// flex gap sits between the two copies once, not twice, so the strip jumped back
+// every lap. The card width is a clamp() on viewport width, so recompute on resize.
+// Direction matters too. In RTL the track is anchored to the parent's right edge
+// and overflows leftwards, so translating it further left walks it out of the
+// window and the strip goes empty; there it has to travel right instead.
+function sizeMarquee(){
+  var track = document.getElementById('gallery-track');
+  var card = track.firstElementChild;
+  if (!card) return;
+  var gap = parseFloat(getComputedStyle(track).gap) || 0;
+  var period = SHOTS.length * (card.getBoundingClientRect().width + gap);
+  var rtl = getComputedStyle(track.parentElement).direction === 'rtl';
+  track.style.setProperty('--shift', (rtl ? period : -period) + 'px');
+}
+sizeMarquee();
+addEventListener('resize', sizeMarquee);
 
 // ---- location map (Leaflet) ----
 // RESIDENCE: exact pin (confirmed 2026-09-07).
