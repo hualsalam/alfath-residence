@@ -3,6 +3,13 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
 
+# ORDER MATTERS. Netlify applies every rule that matches, in file order, and the
+# LAST one to set a given header wins. So this catch-all must stay ABOVE the
+# per-file rules below it — if it moves down, it silently overrides them all and
+# everything in assets/ quietly falls back to 30 days.
+/assets/*
+  Cache-Control: public, max-age=2592000
+
 # Hero videos are large and never change in place.
 # If you re-render, rename the file (hero-r4.mp4) or browsers hold the old one.
 /assets/hero-r3.mp4
@@ -10,14 +17,12 @@
 /assets/hero-r3-m.mp4
   Cache-Control: public, max-age=31536000, immutable
 
-# Script + brochure can change between deploys: revalidate hourly
+# Script + brochure can change between deploys: revalidate hourly, so a new
+# brochure reaches returning visitors within the hour instead of in a month.
 /assets/plan3d.js
   Cache-Control: public, max-age=3600
 /assets/Al-Fath-Residence-Brochure.pdf
   Cache-Control: public, max-age=3600
-
-/assets/*
-  Cache-Control: public, max-age=2592000
 
 /index.html
   Cache-Control: public, max-age=0, must-revalidate

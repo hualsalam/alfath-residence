@@ -260,7 +260,7 @@
 <!-- ============ VIDEO HERO ============ -->
 <header class="hero">
   <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/poster-r3.jpg">
-    <source src="assets/hero-r3.mp4" type="video/mp4">
+    <source type="video/mp4">
   </video>
   <div class="hero__inner">
     <p class="hero__eyebrow">Al Fath, Madinah</p>
@@ -281,7 +281,15 @@
 <script>
 (function(){
   var v=document.getElementById('heroVid');
-  if(window.innerWidth<=860){var s=v.querySelector('source');s.src='assets/hero-r3-m.mp4';v.load();}
+  // The source starts empty so the browser cannot begin fetching the 28 MB desktop
+  // file before we know the screen size. Pick one, then load it — mobile fetches only
+  // its own 12 MB file instead of aborting a partial desktop download first.
+  var s=v.querySelector('source');
+  // innerWidth can read 0 in some embedded/pre-layout contexts; fall back rather than
+  // hand a large screen the low-resolution file.
+  var w = window.innerWidth || screen.width || 1280;
+  s.src = w<=860 ? 'assets/hero-r3-m.mp4' : 'assets/hero-r3.mp4';
+  v.load();
   var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});
   var b=document.getElementById('heroMute'),im=document.getElementById('icoMuted'),is=document.getElementById('icoSound');
   b.addEventListener('click',function(){v.muted=!v.muted;im.style.display=v.muted?'':'none';is.style.display=v.muted?'none':'';b.setAttribute('aria-label',v.muted?'Unmute video':'Mute video');if(!v.muted){var q=v.play();if(q&&q.catch)q.catch(function(){});}});
