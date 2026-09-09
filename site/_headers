@@ -23,6 +23,8 @@
   Cache-Control: public, max-age=3600
 /assets/Al-Fath-Residence-Brochure.pdf
   Cache-Control: public, max-age=3600
+/assets/Al-Fath-Residence-Brochure-AR.pdf
+  Cache-Control: public, max-age=3600
 
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
