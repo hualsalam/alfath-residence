@@ -166,7 +166,7 @@ name:'Type C'	name:'النوع C'
 name:'Type D'	name:'النوع D'
 'Salon, family living room, kitchen, two bedrooms (one en-suite), guest bathroom and laundry.'	'صالة استقبال، مجلس عائلي، مطبخ، غرفتا نوم (إحداهما بدورة مياه خاصة)، دورة مياه للضيوف، وغرفة غسيل.'
 'Salon and living room side by side, an open kitchen, two bedrooms with their own bathrooms, guest WC and laundry.'	'صالة استقبال ومجلس متجاوران، مطبخ مفتوح، غرفتا نوم بدورتي مياه خاصتين، دورة مياه للضيوف، وغرفة غسيل.'
-'A compact two-bedroom home with salon, living room, kitchen, two bathrooms and laundry.'	'وحدة عملية بغرفتي نوم مع صالة استقبال ومجلس ومطبخ ودورتي مياه وغرفة غسيل.'
+'Two bedrooms, salon and living room, an open kitchen and three bathrooms.'	'غرفتا نوم، صالة استقبال ومجلس، مطبخ مفتوح، وثلاث دورات مياه.'
 'Salon, living room, kitchen, two bedrooms, three bathrooms and a dedicated laundry room.'	'صالة استقبال، مجلس، مطبخ، غرفتا نوم، ثلاث دورات مياه، وغرفة غسيل مستقلة.'
 +p.area+' sqm</span>	+p.area+' م²</span>
 p.area + ' sqm'	p.area + ' م²'
