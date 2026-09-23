@@ -278,13 +278,13 @@
     <a href="#reserve">تواصل معنا</a>
     <a href="#gallery">المعرض</a>
     <a class="nav__lang" href="/">English</a>
-    <a class="nav__cta" href="../assets/Al-Fath-Residence-Brochure-AR.pdf" download title="تحميل الكتيّب (PDF)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg><span>الكتيّب</span></a>
+    <a class="nav__cta" href="../assets/Alfath-Residence-Brochure.pdf" download="Alfath Residence Brochure.pdf" title="تحميل الكتيّب (PDF)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg><span>الكتيّب</span></a>
   </div>
 </nav>
 
 <!-- ============ VIDEO HERO ============ -->
 <header class="hero">
-  <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="../assets/poster-r3.jpg">
+  <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="../assets/poster-r5.jpg">
     <source type="video/mp4">
   </video>
   <div class="hero__inner">
@@ -293,7 +293,7 @@
     <p class="hero__sub">مكانٌ تناديه روحك بيتاً.</p>
     <div class="hero__actions">
       <a class="btn" href="#reserve">سجّل اهتمامك</a>
-      <a class="btn btn--ghost" href="../assets/Al-Fath-Residence-Brochure-AR.pdf" download>
+      <a class="btn btn--ghost" href="../assets/Alfath-Residence-Brochure.pdf" download="Alfath Residence Brochure.pdf">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg>تحميل الكتيّب</a>
     </div>
   </div>
@@ -313,7 +313,10 @@
   // innerWidth can read 0 in some embedded/pre-layout contexts; fall back rather than
   // hand a large screen the low-resolution file.
   var w = window.innerWidth || screen.width || 1280;
-  s.src = w<=860 ? '../assets/hero-r4-m.mp4' : '../assets/hero-r4.mp4';
+  // AV1 is about half the size of H.264 at the same quality; browsers that cannot
+  // decode it (older Safari and iPhones) get the H.264 file instead.
+  var av1 = !!(v.canPlayType && v.canPlayType('video/mp4; codecs="av01.0.08M.08"') === 'probably');
+  s.src = '../assets/hero-r6' + (w<=860 ? '-m' : '') + (av1 ? '-av1' : '') + '.mp4';
   v.load();
   var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});
   var b=document.getElementById('heroMute'),im=document.getElementById('icoMuted'),is=document.getElementById('icoSound');
@@ -445,7 +448,7 @@
         <p id="ctDoneMsg">تم إرسال رسالتك. سيتواصل معك فريقنا قريباً.</p>
       </div>
     </div>
-    <p class="reserve__brochure">تفضّل الاطلاع أولاً؟ <a href="../assets/Al-Fath-Residence-Brochure-AR.pdf" download>حمّل الكتيّب (PDF)</a></p>
+    <p class="reserve__brochure">تفضّل الاطلاع أولاً؟ <a href="../assets/Alfath-Residence-Brochure.pdf" download="Alfath Residence Brochure.pdf">حمّل الكتيّب (PDF)</a></p>
   </div>
 </section>
 
@@ -475,7 +478,7 @@
         <a href="#plans">المخططات</a>
         <a href="#location">الموقع</a>
         <a href="#gallery">المعرض</a>
-        <a href="../assets/Al-Fath-Residence-Brochure-AR.pdf" download>الكتيّب (PDF)</a>
+        <a href="../assets/Alfath-Residence-Brochure.pdf" download="Alfath Residence Brochure.pdf">الكتيّب (PDF)</a>
       </div>
     </div>
     <div>
@@ -547,18 +550,18 @@
 // ---- floor plans ----
 var PLANS = [
   // jb = drawing bbox inside the hi-res plan JPG, fb = footprint bbox inside the 3D mask (both in pixels) — used to register the drawing onto the model
-  {id:'a', name:'النوع A', area:133, beds:2, baths:3, living:2, laundry:true, jb:[68,79,1262,675], fb:[12,12,664,323], rooms:'صالة استقبال، مجلس عائلي، مطبخ، غرفتا نوم (إحداهما بدورة مياه خاصة)، دورة مياه للضيوف، وغرفة غسيل.'},
-  {id:'b', name:'النوع B', area:138, beds:2, baths:3, living:2, laundry:true, jb:[88,99,1337,671], fb:[12,12,636,311], rooms:'صالة استقبال ومجلس متجاوران، مطبخ مفتوح، غرفتا نوم بدورتي مياه خاصتين، دورة مياه للضيوف، وغرفة غسيل.'},
-  {id:'c', name:'النوع C', area:112, beds:2, baths:2, living:2, laundry:true, jb:[32,4,1434,699], fb:[11,12,697,359], rooms:'وحدة عملية بغرفتي نوم مع صالة استقبال ومجلس ومطبخ ودورتي مياه وغرفة غسيل.'},
-  {id:'d', name:'النوع D', area:118, beds:2, baths:3, living:2, laundry:true, jb:[181,112,1059,799], fb:[12,12,552,402], rooms:'صالة استقبال، مجلس، مطبخ، غرفتا نوم، ثلاث دورات مياه، وغرفة غسيل مستقلة.'}
+  {id:'a', name:'النوع A', file:'a-r2', area:133, beds:2, baths:3, living:2, laundry:false, jb:[14,14,1413,726], fb:[9,9,883,454], rooms:'صالة استقبال، مجلس، مطبخ، غرفتا نوم (إحداهما بدورة مياه خاصة)، وثلاث دورات مياه.'},
+  {id:'b', name:'النوع B', file:'b-r2', area:139, beds:2, baths:3, living:2, laundry:false, jb:[14,14,1462,669], fb:[9,9,914,418], rooms:'صالة استقبال ومجلس متجاوران، مطبخ، غرفتا نوم، وثلاث دورات مياه.'},
+  {id:'c', name:'النوع C', file:'c-r2', area:116, beds:2, baths:3, living:2, laundry:false, jb:[16,16,1486,696], fb:[10,10,929,435], rooms:'غرفتا نوم، صالة استقبال ومجلس، مطبخ مفتوح، وثلاث دورات مياه.'},
+  {id:'d', name:'النوع D', file:'d-r2', area:112, beds:2, baths:3, living:2, laundry:false, jb:[16,16,1059,854], fb:[10,10,662,534], rooms:'صالة استقبال، مجلس، مطبخ، غرفتا نوم، وثلاث دورات مياه.'}
 ];
 // Furniture per plan, detected from the plan artwork then labelled by piece:
 // [x0,y0,x1,y1, r,g,b, areaPx, kind] in plan-mask pixels. kind: bed|sofa|counter|cab|wardrobe|tub|fix|skip
 var FURN = {
-  a:[[335,23,371,39,184,182,181,552,'cab'],[502,24,515,87,161,158,156,819,'wardrobe'],[534,27,613,103,199,194,193,5065,'bed'],[439,50,489,111,176,173,171,2222,'tub'],[409,60,426,83,173,170,168,382,'fix'],[644,60,654,115,209,217,222,462,'skip'],[281,90,303,117,211,210,207,616,'fix'],[614,106,633,126,149,145,143,305,'fix'],[578,145,643,162,164,161,159,1023,'wardrobe'],[575,175,644,191,156,154,153,977,'wardrobe'],[644,210,652,263,202,212,217,425,'skip'],[404,221,423,278,141,137,136,1038,'fix'],[439,228,489,312,178,177,175,3704,'tub'],[536,228,613,312,195,192,190,5568,'bed'],[33,230,90,312,168,166,164,3235,'tub'],[108,234,241,320,148,145,144,5528,'sofa'],[502,242,521,312,165,162,160,1012,'wardrobe'],[330,313,387,320,196,206,213,357,'skip']],
-  b:[[26,15,134,130,181,178,177,6843,'sofa'],[369,15,419,21,195,203,210,283,'skip'],[172,16,291,157,180,177,176,10881,'sofa'],[463,24,503,48,176,174,175,985,'fix'],[333,44,417,131,191,188,189,6782,'bed'],[540,44,621,131,206,203,203,6374,'bed'],[478,59,503,107,154,154,155,1051,'fix'],[515,170,624,215,165,163,164,3827,'tub'],[228,212,317,300,169,164,163,2481,'counter'],[86,220,131,300,151,149,151,2036,'tub'],[127,223,162,254,147,146,147,968,'fix']],
-  c:[[232,21,287,27,208,214,220,360,'skip'],[383,21,439,27,205,211,216,354,'skip'],[565,32,621,43,203,211,216,370,'skip'],[238,54,309,118,185,180,177,3751,'bed'],[68,71,127,78,207,213,218,478,'skip'],[344,86,358,127,136,132,128,288,'fix'],[634,106,658,152,136,131,128,687,'fix'],[160,134,171,159,196,191,188,230,'fix'],[44,136,105,187,187,182,179,2183,'bed'],[239,177,310,182,185,181,180,325,'wardrobe'],[581,211,631,264,177,172,169,1989,'tub'],[456,236,481,263,191,189,186,685,'fix'],[242,253,325,305,182,180,178,3784,'tub'],[219,257,229,300,174,171,170,320,'skip'],[559,271,615,317,171,167,166,1502,'tub'],[394,289,423,305,172,168,166,497,'fix']],
-  d:[[264,16,320,22,212,217,222,349,'skip'],[248,30,355,169,170,166,163,10439,'sofa'],[30,88,73,159,174,172,171,2175,'bed'],[89,94,123,167,164,162,160,1775,'bed'],[372,129,435,179,177,176,175,3152,'tub'],[448,129,547,179,180,177,177,4072,'tub'],[24,199,143,247,174,172,173,4848,'bed'],[217,252,264,390,190,188,188,6056,'tub'],[278,252,375,399,194,193,193,11479,'counter'],[15,292,74,370,177,176,176,2922,'bed'],[492,302,513,351,150,145,142,910,'fix'],[89,306,135,377,162,159,156,2141,'bed'],[181,308,202,382,184,180,180,1545,'wardrobe'],[71,392,127,398,195,203,209,399,'skip'],[431,392,489,398,194,203,208,413,'skip']]
+  a:[[360,75,392,150,0,0,0,0,'wardrobe'],[393,20,562,60,0,0,0,0,'counter'],[528,62,562,165,0,0,0,0,'counter'],[580,62,603,95,0,0,0,0,'fix'],[625,102,650,145,0,0,0,0,'fix'],[700,25,753,135,0,0,0,0,'bed'],[778,25,833,135,0,0,0,0,'bed'],[765,190,863,222,0,0,0,0,'wardrobe'],[760,237,848,262,0,0,0,0,'cab'],[725,310,836,433,0,0,0,0,'bed'],[667,335,698,430,0,0,0,0,'wardrobe'],[630,325,653,350,0,0,0,0,'fix'],[620,380,643,425,0,0,0,0,'fix'],[532,257,562,390,0,0,0,0,'cab'],[360,268,415,435,172,168,162,0,'sofa'],[415,380,495,435,172,168,162,0,'sofa'],[118,392,310,432,172,168,162,0,'sofa'],[303,290,345,385,172,168,162,0,'sofa'],[27,325,48,350,0,0,0,0,'fix'],[52,405,75,432,0,0,0,0,'fix']],
+  b:[[155,70,198,165,172,168,162,0,'sofa'],[212,40,272,162,172,168,162,0,'sofa'],[272,25,345,65,172,168,162,0,'sofa'],[385,55,412,177,0,0,0,0,'cab'],[155,302,172,325,0,0,0,0,'fix'],[137,372,160,400,0,0,0,0,'fix'],[220,372,375,402,0,0,0,0,'counter'],[382,285,420,325,0,0,0,0,'wardrobe'],[382,325,420,400,0,0,0,0,'counter'],[427,72,522,127,0,0,0,0,'bed'],[427,150,522,204,0,0,0,0,'bed'],[425,27,504,50,0,0,0,0,'cab'],[586,27,619,122,0,0,0,0,'wardrobe'],[669,55,689,85,0,0,0,0,'fix'],[671,100,699,125,0,0,0,0,'fix'],[789,50,897,152,0,0,0,0,'bed'],[714,65,742,147,0,0,0,0,'cab'],[806,177,899,205,0,0,0,0,'wardrobe'],[796,265,819,285,0,0,0,0,'fix'],[849,252,869,285,0,0,0,0,'fix']],
+  c:[[27,122,148,230,0,0,0,0,'bed'],[30,257,125,288,0,0,0,0,'wardrobe'],[192,102,222,188,0,0,0,0,'cab'],[235,57,265,150,0,0,0,0,'wardrobe'],[322,63,427,120,0,0,0,0,'bed'],[322,145,427,198,0,0,0,0,'bed'],[150,352,172,372,0,0,0,0,'fix'],[200,345,220,372,0,0,0,0,'fix'],[242,340,257,355,0,0,0,0,'fix'],[330,352,350,372,0,0,0,0,'fix'],[372,345,392,372,0,0,0,0,'fix'],[407,340,422,355,0,0,0,0,'fix'],[447,40,490,165,172,168,162,0,'sofa'],[490,28,566,70,172,168,162,0,'sofa'],[601,60,631,192,0,0,0,0,'cab'],[442,338,636,372,0,0,0,0,'counter'],[442,300,475,338,0,0,0,0,'cab'],[599,270,640,305,0,0,0,0,'wardrobe'],[650,55,835,95,172,168,162,0,'sofa'],[815,100,868,195,172,168,162,0,'sofa'],[804,270,824,300,0,0,0,0,'fix'],[754,340,779,370,0,0,0,0,'fix']],
+  d:[[32,105,143,165,0,0,0,0,'bed'],[32,185,143,236,0,0,0,0,'bed'],[198,97,226,190,0,0,0,0,'wardrobe'],[245,40,307,170,172,168,162,0,'sofa'],[307,22,368,73,172,168,162,0,'sofa'],[408,63,440,200,0,0,0,0,'cab'],[467,160,493,180,0,0,0,0,'fix'],[513,163,533,197,0,0,0,0,'fix'],[113,264,140,284,0,0,0,0,'fix'],[37,267,67,294,0,0,0,0,'fix'],[60,397,167,515,0,0,0,0,'bed'],[199,417,227,517,0,0,0,0,'wardrobe'],[283,407,313,434,0,0,0,0,'fix'],[272,460,297,494,0,0,0,0,'fix'],[320,374,350,471,0,0,0,0,'counter'],[423,327,460,364,0,0,0,0,'wardrobe'],[423,364,460,484,0,0,0,0,'counter'],[360,484,452,517,0,0,0,0,'counter'],[466,371,520,477,172,168,162,0,'sofa']]
 };
 var SI = {
   bed:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4"/><path d="M8 10V8h3v2M13 10V8h3v2"/></svg>',
@@ -568,7 +571,7 @@ var SI = {
   area:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16"/><path d="M4 9h4M4 15h4M15 4v4M9 4v4"/></svg>'
 };
 var pick = document.getElementById('planPick');
-pick.innerHTML = PLANS.map(function(p,i){ return '<button class="pcard'+(i===0?' active':'')+'" type="button" data-plan="'+p.id+'"><div class="pcard__img"><img src="../assets/plans/'+p.id+'.jpg" alt="'+p.name+' مخطط الوحدة" loading="lazy"></div><div class="pcard__body"><span class="pcard__type">'+p.name+'</span><span class="pcard__area">'+p.area+' م²</span></div></button>'; }).join('');
+pick.innerHTML = PLANS.map(function(p,i){ return '<button class="pcard'+(i===0?' active':'')+'" type="button" data-plan="'+p.id+'"><div class="pcard__img"><img src="../assets/plans/'+(p.file||p.id)+'.jpg" alt="'+p.name+' مخطط الوحدة" loading="lazy"></div><div class="pcard__body"><span class="pcard__type">'+p.name+'</span><span class="pcard__area">'+p.area+' م²</span></div></button>'; }).join('');
 
 var viewer = null, current = null, threeLoading = false;
 var stage = document.getElementById('stage'), stageView = document.getElementById('stageView'), stLoad = document.getElementById('stageLoading');
@@ -579,16 +582,16 @@ function selectPlan(id){
   document.getElementById('stArea').textContent = p.area + ' م²';
   document.getElementById('stSpecs').innerHTML = '<li>'+SI.area+p.area+' م²</li><li>'+SI.bed+(p.beds===2?'غرفتا نوم':p.beds+' غرف نوم')+'</li><li>'+SI.bath+(p.baths===2?'دورتا مياه':p.baths+' دورات مياه')+'</li><li>'+SI.sofa+'صالة + مجلس</li>'+(p.laundry?'<li>'+SI.wash+'غسيل</li>':'');
   document.getElementById('stRooms').textContent = p.rooms;
-  var fi = document.getElementById('stageFlatImg'); fi.src = '../assets/plans/'+p.id+'.jpg'; fi.alt = p.name+' floor plan';
+  var fi = document.getElementById('stageFlatImg'); fi.src = '../assets/plans/'+(p.file||p.id)+'.jpg'; fi.alt = p.name+' floor plan';
   build3d();
 }
 function build3d(){
   if (!current) return;
-  if (!window.THREE){ if (!threeLoading){ threeLoading = true; stLoad.classList.remove('off'); var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js'; s.onload = function(){ var s2 = document.createElement('script'); s2.src = '../assets/plan3d.js?v=7'; s2.onload = build3d; document.head.appendChild(s2); }; s.onerror = function(){ stLoad.textContent = 'تعذّر عرض النموذج — يظهر المخطط'; stage.classList.add('flat'); }; document.head.appendChild(s); } return; }
+  if (!window.THREE){ if (!threeLoading){ threeLoading = true; stLoad.classList.remove('off'); var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js'; s.onload = function(){ var s2 = document.createElement('script'); s2.src = '../assets/plan3d.js?v=8'; s2.onload = build3d; document.head.appendChild(s2); }; s.onerror = function(){ stLoad.textContent = 'تعذّر عرض النموذج — يظهر المخطط'; stage.classList.add('flat'); }; document.head.appendChild(s); } return; }
   if (!window.PlanViewer) return;
   if (!viewer){ viewer = new PlanViewer(stageView); viewer.resize(); }
   stLoad.classList.remove('off');
-  viewer.load('../assets/plans/'+current.id, {tex:'../assets/plans/'+current.id+'.jpg', jb:current.jb, fb:current.fb, furn:FURN[current.id], areaM2:current.area}, function(err){ stLoad.classList.toggle('off', !err); if (err){ stLoad.textContent = 'تعذّر عرض النموذج — يظهر المخطط'; stage.classList.add('flat'); } });
+  viewer.load('../assets/plans/'+(current.file||current.id), {tex:'../assets/plans/'+(current.file||current.id)+'.jpg', jb:current.jb, fb:current.fb, furn:FURN[current.id], areaM2:current.area}, function(err){ stLoad.classList.toggle('off', !err); if (err){ stLoad.textContent = 'تعذّر عرض النموذج — يظهر المخطط'; stage.classList.add('flat'); } });
 }
 pick.addEventListener('click', function(e){ var b = e.target.closest('[data-plan]'); if (!b) return; stage.classList.remove('flat'); set3d(true); selectPlan(b.getAttribute('data-plan')); });
 function set3d(on){ stage.classList.toggle('flat', !on); document.getElementById('btn3d').classList.toggle('on', on); document.getElementById('btn2d').classList.toggle('on', !on); if (on && viewer) viewer.resize(); }
@@ -602,8 +605,8 @@ function set3d(on){ stage.classList.toggle('flat', !on); document.getElementById
 })();
 document.getElementById('btn3d').addEventListener('click', function(){ set3d(true); });
 document.getElementById('btn2d').addEventListener('click', function(){ set3d(false); });
-document.getElementById('stEnlarge').addEventListener('click', function(){ if (current) openLb('../assets/plans/'+current.id+'.jpg'); });
-document.getElementById('stageFlat').addEventListener('click', function(){ if (current) openLb('../assets/plans/'+current.id+'.jpg'); });
+document.getElementById('stEnlarge').addEventListener('click', function(){ if (current) openLb('../assets/plans/'+(current.file||current.id)+'.jpg'); });
+document.getElementById('stageFlat').addEventListener('click', function(){ if (current) openLb('../assets/plans/'+(current.file||current.id)+'.jpg'); });
 // initialise once the section is near the viewport (keeps the hero fast)
 var planIo = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ planIo.disconnect(); selectPlan('a'); } }); }, {rootMargin:'600px 0px'});
 planIo.observe(stage);
