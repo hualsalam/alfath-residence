@@ -92,8 +92,8 @@
   function place(g, x, z, side){
     g.position.set(x, SLAB_H, z);
     if (side === 's') g.rotation.y = Math.PI;
-    else if (side === 'w') g.rotation.y = -Math.PI / 2;
-    else if (side === 'e') g.rotation.y = Math.PI / 2;
+    else if (side === 'w') g.rotation.y = Math.PI / 2;    // turns the -Z back toward -X (west)
+    else if (side === 'e') g.rotation.y = -Math.PI / 2;   // and toward +X (east)
     return g;
   }
   // which side of a blob has the most wall just outside it — that is the side a piece backs onto
