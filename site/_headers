@@ -11,10 +11,14 @@
   Cache-Control: public, max-age=2592000
 
 # Hero videos are large and never change in place.
-# If you re-render, bump the filename (hero-r6.mp4) or browsers hold the old one for a year.
-/assets/hero-r5.mp4
+# If you re-render, bump the filename (hero-r7*) or browsers hold the old one for a year.
+/assets/hero-r6.mp4
   Cache-Control: public, max-age=31536000, immutable
-/assets/hero-r5-m.mp4
+/assets/hero-r6-av1.mp4
+  Cache-Control: public, max-age=31536000, immutable
+/assets/hero-r6-m.mp4
+  Cache-Control: public, max-age=31536000, immutable
+/assets/hero-r6-m-av1.mp4
   Cache-Control: public, max-age=31536000, immutable
 
 # Script + brochure can change between deploys: revalidate hourly, so a new
