@@ -11,7 +11,7 @@ $Domain = $Domain -replace '^https?://', '' -replace '/$', ''
 if ($Domain -notmatch '^[a-z0-9.-]+\.[a-z]{2,}$') { Write-Error "That does not look like a domain: $Domain"; exit 1 }
 
 $root = $PSScriptRoot
-$files = @("$root\site\index.html", "$root\site\sitemap.xml", "$root\site\robots.txt", "$root\brochure\brochure.html")
+$files = @("$root\site\index.html", "$root\site\sitemap.xml", "$root\site\robots.txt")
 $old = 'stately-dusk-d14acd\.netlify\.app|alfathresidence\.netlify\.app|[a-z0-9-]+\.netlify\.app'
 $changed = 0
 
