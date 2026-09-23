@@ -23,10 +23,11 @@ Nothing else blocks launch. The site works today.
 Start the local server once per session:
 
 ```
-powershell -ExecutionPolicy Bypass -File serve.ps1
+"C:\Program Files\Git\usr\bin\perl.exe" serve.pl
 ```
 
-Then open **http://127.0.0.1:8796/**. Leave the window open; it serves until you close it.
+Then open **http://127.0.0.1:8797/**. Leave the window open; it serves until you close it.
+(It is a Perl script because Windows Defender quarantines PowerShell web-server scripts on this PC.)
 
 > **Do not judge the site by the preview panel inside Claude.** It loads the page as a `data:` URL,
 > which has no folder behind it, so every image, the logo and the video come up blank.
@@ -138,7 +139,7 @@ Prefer a CRM or Zapier instead? Send me the endpoint and I'll wire it there.
 The loop is always the same:
 
 1. Edit the file (or ask me to)
-2. Preview at http://127.0.0.1:8796/
+2. Preview at http://127.0.0.1:8797/
 3. Publish:
 
 ```bash
@@ -207,7 +208,7 @@ The Arabic page is *built* from the English one, so the two can never drift apar
 cd "C:\Users\huals\Downloads\Claude Projects\Al Fath Landing page" && bash i18n/build-ar.sh
 ```
 
-3. Check http://127.0.0.1:8796/ar/ , then commit and push as usual
+3. Check http://127.0.0.1:8797/ar/ , then commit and push as usual
 
 ### To change something on both pages
 
@@ -226,15 +227,21 @@ That warning is the safety net: it is impossible to quietly ship a half-translat
 
 ---
 
-## 6. Re-rendering the brochure
+## 6. The brochures
 
-The PDF is generated from `brochure\brochure.html`:
+- **Arabic** (`/ar/`): `site\assets\Alfath-Residence-Brochure.pdf` is the approved brochure exactly as
+  supplied. To update it, replace the file.
+- **English** (`/`): `site\assets\Alfath-Residence-Brochure-EN.pdf` is generated from
+  `brochure\brochure-en.html`. Each page uses the approved artwork with the Arabic text removed
+  (`brochure\en\pNN.jpg`), and the English text is set on top in that HTML file. To change wording,
+  edit the HTML and re-render:
 
 ```
-powershell -Command "& 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe' --headless --disable-gpu --user-data-dir=$env:TEMP\ep1 --no-pdf-header-footer --virtual-time-budget=25000 '--print-to-pdf=C:\Users\huals\Downloads\Claude Projects\Al Fath Landing page\site\assets\Al-Fath-Residence-Brochure.pdf' 'file:///C:/Users/huals/Downloads/Claude%20Projects/Al%20Fath%20Landing%20page/brochure/brochure.html'"
+powershell -Command "& 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe' --headless --disable-gpu --user-data-dir=$env:TEMP\ep1 --no-pdf-header-footer --virtual-time-budget=25000 '--print-to-pdf=C:\Users\john-\OneDrive\Desktop\Claude\Al Fath Landing page\Al Fath Landing page\site\assets\Alfath-Residence-Brochure-EN.pdf' 'file:///C:/Users/john-/OneDrive/Desktop/Claude/Al%20Fath%20Landing%20page/Al%20Fath%20Landing%20page/brochure/brochure-en.html'"
 ```
 
 Use a different `--user-data-dir` each time (`ep1`, `ep2`, …) or Edge silently does nothing.
+If the approved Arabic brochure changes, the English page images must be redone to match.
 
 ---
 

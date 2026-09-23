@@ -27,6 +27,8 @@
   Cache-Control: public, max-age=3600
 /assets/Alfath-Residence-Brochure.pdf
   Cache-Control: public, max-age=3600
+/assets/Alfath-Residence-Brochure-EN.pdf
+  Cache-Control: public, max-age=3600
 
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
