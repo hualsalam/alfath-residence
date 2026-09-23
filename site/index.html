@@ -259,7 +259,7 @@
 
 <!-- ============ VIDEO HERO ============ -->
 <header class="hero">
-  <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/poster-r3.jpg">
+  <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/poster-r4.jpg">
     <source type="video/mp4">
   </video>
   <div class="hero__inner">
@@ -288,7 +288,7 @@
   // innerWidth can read 0 in some embedded/pre-layout contexts; fall back rather than
   // hand a large screen the low-resolution file.
   var w = window.innerWidth || screen.width || 1280;
-  s.src = w<=860 ? 'assets/hero-r4-m.mp4' : 'assets/hero-r4.mp4';
+  s.src = w<=860 ? 'assets/hero-r5-m.mp4' : 'assets/hero-r5.mp4';
   v.load();
   var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});
   var b=document.getElementById('heroMute'),im=document.getElementById('icoMuted'),is=document.getElementById('icoSound');
