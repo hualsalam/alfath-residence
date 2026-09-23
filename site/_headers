@@ -21,9 +21,7 @@
 # brochure reaches returning visitors within the hour instead of in a month.
 /assets/plan3d.js
   Cache-Control: public, max-age=3600
-/assets/Al-Fath-Residence-Brochure.pdf
-  Cache-Control: public, max-age=3600
-/assets/Al-Fath-Residence-Brochure-AR.pdf
+/assets/Alfath-Residence-Brochure.pdf
   Cache-Control: public, max-age=3600
 
 /index.html
