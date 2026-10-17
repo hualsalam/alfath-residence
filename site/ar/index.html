@@ -74,8 +74,10 @@
   .hero__sub{font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.6;color:rgba(251,247,240,.92);max-width:46ch;margin:18px 0 0;font-weight:300;text-shadow:0 1px 14px rgba(16,26,44,.5)}
   .hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
   .hero__scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:2;color:rgba(251,247,240,.7);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
-  .hero__mute{position:absolute;right:clamp(16px,3vw,40px);bottom:clamp(18px,3vw,36px);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(251,247,240,.5);background:rgba(16,26,44,.45);color:#FBF7F0;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)}
+  .hero__mute{position:absolute;inset-inline-start:clamp(16px,3vw,40px);bottom:clamp(18px,3vw,36px);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(251,247,240,.5);background:rgba(16,26,44,.45);color:#FBF7F0;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)}
   .hero__mute:hover{background:rgba(16,26,44,.7)}
+  /* phones: lift the hero buttons clear of the mute button below them */
+  @media (max-width:560px){.hero__inner{padding-bottom:80px}}
   /* top nav */
   .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(20px,4vw,52px);background:linear-gradient(180deg,rgba(16,26,44,.55),rgba(16,26,44,0));transition:background .35s ease,box-shadow .35s ease}
   .nav.scrolled{background:rgba(16,26,44,.94);box-shadow:0 6px 26px rgba(0,0,0,.28)}
@@ -254,7 +256,6 @@
      everywhere. !important because several spacings are set in inline styles. */
   body *{letter-spacing:normal !important}
   /* elements pinned to a side have to swap sides */
-  .hero__mute{right:auto;left:clamp(16px,3vw,40px)}
   .stage__toggle{right:auto;left:16px}
   .stage__hint{left:auto;right:18px}
   .mdl__x{right:auto;left:14px}
@@ -273,14 +274,13 @@
   /* the marquee keeps its original travel direction; captions read right-to-left */
   #gallery-track{direction:ltr}
   #gallery-track span{direction:rtl}
-  /* floating WhatsApp button: hidden over the hero, slides in once the visitor scrolls past it */
-  .wa-fab{position:fixed;inset-inline-end:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:90;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(16,26,44,.28);opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .2s}
-  .wa-fab.show{opacity:1;transform:none;pointer-events:auto}
-  .wa-fab:hover{background:#1ebe5a}
+  /* floating WhatsApp button, shown on every part of the page; the hero mute button sits on the opposite side */
+  .wa-fab{position:fixed;inset-inline-end:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:90;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(16,26,44,.28);transition:background .2s,transform .2s}
+  .wa-fab:hover{background:#1ebe5a;transform:scale(1.06)}
   .wa-fab:focus-visible{outline:3px solid #fff;outline-offset:3px}
   .wa-fab svg{width:30px;height:30px}
   @media (max-width:560px){.wa-fab{width:54px;height:54px}.wa-fab svg{width:28px;height:28px}}
-  @media (prefers-reduced-motion:reduce){.wa-fab{transition:opacity .2s}}
+  @media (prefers-reduced-motion:reduce){.wa-fab{transition:none}.wa-fab:hover{transform:none}}
 </style>
 </head>
 <body id="top">
@@ -816,15 +816,13 @@ document.addEventListener('click', function(e){
   else if (b) openLb(b.getAttribute('data-zoom-src'));
 });
 </script>
-<!-- floating WhatsApp button (appears after the hero); each click is reported to Google Ads as whatsapp_click -->
+<!-- floating WhatsApp button; each click is reported to Google Ads as whatsapp_click -->
 <a class="wa-fab" id="waFab" href="https://wa.me/966551341505?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%81%D8%AA%D8%AD%20%D8%B1%D9%8A%D8%B2%D9%8A%D8%AF%D9%86%D8%B3." target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب" title="تواصل معنا عبر واتساب">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></svg>
 </a>
 <script>
 (function(){
-  var fab = document.getElementById('waFab'), hero = document.querySelector('.hero');
-  function onScroll(){ var past = hero ? hero.getBoundingClientRect().bottom < window.innerHeight * 0.35 : window.scrollY > 400; fab.classList.toggle('show', past); }
-  onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', onScroll);
+  var fab = document.getElementById('waFab');
   // The link opens WhatsApp in a new tab/app, so this page stays open and the event is sent without delaying the click.
   fab.addEventListener('click', function(){ if (typeof gtag === 'function') gtag('event', 'whatsapp_click', {link_url: fab.href, placement: 'floating_button'}); });
 })();
