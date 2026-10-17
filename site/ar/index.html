@@ -10,6 +10,24 @@
 
   gtag('config', 'AW-18502063290');
 </script>
+<!-- Google tag (gtag.js) event - delayed navigation helper -->
+<script>
+  // Helper function to delay opening a URL until a gtag event is sent.
+  // Call it in response to an action that should navigate to a URL.
+  function gtagSendEvent(url) {
+    var callback = function () {
+      if (typeof url === 'string') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'whatsapp_click', {
+      'event_callback': callback,
+      'event_timeout': 2000,
+      // <event_parameters>
+    });
+    return false;
+  }
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>الفتح ريزيدنس — شقق سكنية في المدينة المنورة</title>
@@ -823,8 +841,9 @@ document.addEventListener('click', function(e){
 <script>
 (function(){
   var fab = document.getElementById('waFab');
-  // The link opens WhatsApp in a new tab/app, so this page stays open and the event is sent without delaying the click.
-  fab.addEventListener('click', function(){ if (typeof gtag === 'function') gtag('event', 'whatsapp_click', {link_url: fab.href, placement: 'floating_button'}); });
+  // Report the click with Google's gtagSendEvent helper (in <head>). It is called without a URL because the
+  // link opens WhatsApp in a new tab/app: this page stays open, so the chat is not delayed.
+  fab.addEventListener('click', function(){ if (typeof gtagSendEvent === 'function') gtagSendEvent(); });
 })();
 </script>
 </body>
