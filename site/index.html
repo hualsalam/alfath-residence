@@ -737,6 +737,15 @@ function wireLeadForm(o){
       'Reference': ref
     };
     var done = function(sent){
+      // Report a delivered lead to Google Ads: contact_form_submit (Contact Us form) or unit_enquiry (floor-plan enquiry).
+      // Email and phone go as user_data for enhanced conversions (Google hashes them). Religion and nationality are never sent.
+      if (sent && typeof gtag === 'function') {
+        var phoneE164 = codeSel.value + document.getElementById(o.phone).value.replace(/\D/g, '').replace(/^0+/, '');
+        gtag('set', 'user_data', { email: data['Email'].toLowerCase(), phone_number: phoneE164 });
+        gtag('event', o.form === 'enqForm' ? 'unit_enquiry' : 'contact_form_submit', {
+          value: 100, currency: 'SAR', transaction_id: ref, apartment_type: data['Apartment type']
+        });
+      }
       if (o.refEl) document.getElementById(o.refEl).textContent = ref;
       document.getElementById(o.doneMsg).textContent = sent
         ? (o.sentMsg || 'Your message has been sent. Our team will be in touch shortly.')
