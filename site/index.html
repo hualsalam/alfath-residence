@@ -745,8 +745,8 @@ function wireLeadForm(o){
         gtag('event', o.form === 'enqForm' ? 'unit_enquiry' : 'contact_form_submit', {
           value: 10, currency: 'SAR', transaction_id: ref, apartment_type: data['Apartment type']
         });
-        // Google Ads conversion actions (Goals > Conversions). Paste the unit-enquiry label once that action exists.
-        var AW_LABELS = { ctForm: 'AW-18502063290/gVy4CLn1_6cdELqpvPZE', enqForm: '' };
+        // Google Ads conversion actions (Goals > Conversions): Al Fath - Contact form, Al Fath - Unit enquiry (3D).
+        var AW_LABELS = { ctForm: 'AW-18502063290/gVy4CLn1_6cdELqpvPZE', enqForm: 'AW-18502063290/EGgMCJ3kiKgdELqpvPZE' };
         if (AW_LABELS[o.form]) gtag('event', 'conversion', { send_to: AW_LABELS[o.form], value: 10, currency: 'SAR', transaction_id: ref });
       }
       if (o.refEl) document.getElementById(o.refEl).textContent = ref;
