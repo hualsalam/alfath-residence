@@ -743,8 +743,11 @@ function wireLeadForm(o){
         var phoneE164 = codeSel.value + document.getElementById(o.phone).value.replace(/\D/g, '').replace(/^0+/, '');
         gtag('set', 'user_data', { email: data['Email'].toLowerCase(), phone_number: phoneE164 });
         gtag('event', o.form === 'enqForm' ? 'unit_enquiry' : 'contact_form_submit', {
-          value: 100, currency: 'SAR', transaction_id: ref, apartment_type: data['Apartment type']
+          value: 10, currency: 'SAR', transaction_id: ref, apartment_type: data['Apartment type']
         });
+        // Google Ads conversion actions (Goals > Conversions). Paste the unit-enquiry label once that action exists.
+        var AW_LABELS = { ctForm: 'AW-18502063290/gVy4CLn1_6cdELqpvPZE', enqForm: '' };
+        if (AW_LABELS[o.form]) gtag('event', 'conversion', { send_to: AW_LABELS[o.form], value: 10, currency: 'SAR', transaction_id: ref });
       }
       if (o.refEl) document.getElementById(o.refEl).textContent = ref;
       document.getElementById(o.doneMsg).textContent = sent
